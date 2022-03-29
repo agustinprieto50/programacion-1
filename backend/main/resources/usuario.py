@@ -10,25 +10,25 @@ USUARIOS = {
 #Recurso Usuario
 class Usuario(Resource):
 
-    #Obtener recurso
+    #Obtener usuario
     def get(self, id):
         #Verificar que exista un usuario con ese Id en diccionario
         if int(id) in Usuario:
             #Devolver usuario correspondiente
             return USUARIOS[int(id)]
         #Devolver error 404 en caso que no exista
-        return '', 404
+        return 'No se encontro el usuario con ese Id', 404
 
-    #Eliminar recurso
+    #Eliminar usuario
     def delete(self, id):
-        #Verificar que exista un Profesor con ese Id en diccionario
+        #Verificar que exista un usuario con ese Id en diccionario
         if int(id) in USUARIOS:
             #Eliminar usuario del diccionario
             del USUARIOS[int(id)]
-            return '', 204
-        return '', 404
+            return f'Se elimino el usuario {id}', 204
+        return 'No se encontro el usuario con ese Id', 404
 
-    #Modificar recurso
+    #Modificar usuario
     def put(self, id):
         if int(id) in USUARIOS:
             usuario = USUARIOS[int(id)]
@@ -36,14 +36,14 @@ class Usuario(Resource):
             data = request.get_json()
             usuario.update(data)
             return usuario, 201
-        return '', 404
+        return 'No se encontro el usuario con ese Id', 404
 
 #Recurso Usuarios
 class Usuarios(Resource):
-    #Obtener lista de recursos
+    #Obtener lista de usuarios
     def get(self):
         return USUARIOS
-    #Insertar recurso
+    #Insertar usuario
     def post(self):
         #Obtener datos de la solicitud
         usuario = request.get_json()

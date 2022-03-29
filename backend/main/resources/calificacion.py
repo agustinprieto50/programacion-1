@@ -9,23 +9,14 @@ CALIFICACIONES = {
 
 
 class Calificacion(Resource):
-    #Obtener recurso
+    #Obtener calificacion
     def get(self, id):
-
         if int(id) in CALIFICACIONES:
             #Devolver calificacion correspondiente
             return CALIFICACIONES[int(id)]
         #Devolver error 404 en caso que no exista
-        return '', 404
-    #Eliminar recurso
-    def delete(self, id):
-        #Verificar que exista un Profesor con ese Id en diccionario
-        if int(id) in CALIFICACIONES:
-            #Eliminar calificacion del diccionario
-            del CALIFICACIONES[int(id)]
-            return '', 204
-        return '', 404
-    #Modificar recurso
+        return 'No se encontro la calificacion', 404
+    #Modificar calificacion
     def put(self, id):
         if int(id) in CALIFICACIONES:
             calificacion = CALIFICACIONES[int(id)]
@@ -33,14 +24,14 @@ class Calificacion(Resource):
             data = request.get_json()
             calificacion.update(data)
             return calificacion, 201
-        return '', 404
+        return 'No se encontro la calificacion', 404
 
-#Recurso Profesores
+#Recurso Calificaciones
 class Calificaciones(Resource):
-    #Obtener lista de recursos
+    #Obtener lista de calificaciones
     def get(self):
         return CALIFICACIONES
-    #Insertar recurso
+    #Insertar calificacion
     def post(self):
         #Obtener datos de la solicitud
         calificacion = request.get_json()
