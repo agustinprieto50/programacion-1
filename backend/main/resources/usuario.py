@@ -13,7 +13,7 @@ class Usuario(Resource):
     #Obtener usuario
     def get(self, id):
         #Verificar que exista un usuario con ese Id en diccionario
-        if int(id) in Usuario:
+        if int(id) in USUARIOS:
             #Devolver usuario correspondiente
             return USUARIOS[int(id)]
         #Devolver error 404 en caso que no exista
