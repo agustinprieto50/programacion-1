@@ -1,13 +1,7 @@
 from flask_restful import Resource
-from flask import request
+from flask import jsonify, request
 from .. import db
 from main.models import UserModel
-
-#Diccionario de prueba
-USERS = {
-    1: {'alias': 'pedro', 'email': 'pedro@gmail.com'},
-    2: {'alias': 'maria', 'email': 'maria@gmail.com'},
-}
 
 #Recurso User
 class User(Resource):
@@ -15,34 +9,33 @@ class User(Resource):
     #Obtener usuario
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-
+        return user.to_json()
     #Eliminar usuario
     def delete(self, id):
-        #Verificar que exista un usuario con ese Id en diccionario
-        if int(id) in USERS:
-            #Eliminar usuario del diccionario
-            del USERS[int(id)]
-            return f'Se elimino el usuario {id}', 204
-        return 'No se encontro el usuario con ese Id', 404
-
+        user = db.session.query(UserModel).get_or_404(id)
+        db.session.delete(user)
+        db.session.commit()
+        return f'Se elimino el usuario con id: {id}', 204
     #Modificar usuario
     def put(self, id):
-        if int(id) in USERS:
-            usuario = USERS[int(id)]
-            #Obtengo los datos de la solicitud
-            data = request.get_json()
-            user.update(data)
-            return user, 201
-        return 'No se encontro el usuario con ese Id', 404
+        user = db.session.query(UserModel).get_or_404(id)
+        data = request.get_json().items()
+        for key, value in data:
+            setattr(user, key, value)
+        db.session.add(user)
+        db.session.commit()
+        return user.to_json() , 201
+
 
 #Recurso Users
 class Users(Resource):
     #Obtener lista de USERS
     def get(self):
-        return USERS
+        users = db.session.query(UserModel).all()
+        return jsonify([user.to_json() for user in users])
     #Insertar usuario
     def post(self):
-        #Obtener datos de la solicitud
         user = UserModel.from_json(request.get_json())
+        db.session.add(user)
         db.session.commit()
         return user.to_json(),201
