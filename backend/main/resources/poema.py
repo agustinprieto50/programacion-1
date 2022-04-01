@@ -2,18 +2,18 @@ from flask_restful import Resource
 from flask import request
 
 #Diccionario de prueba
-POEMAS = {
+POEMS = {
     1: {'contenido': 'kjfi3rhgoerhgfr', 'autor_id':1},
     2: {'contenido': 'JGEIRGJIER','autor_id':2},
 }
 
 
-class Poema(Resource):
+class Poem(Resource):
     #Obtener poema
     def get(self, id):
-        if int(id) in POEMAS:
+        if int(id) in POEMS:
             #Devolver poema correspondiente
-            return POEMAS[int(id)]
+            return POEMS[int(id)]
         #Devolver error 404 en caso que no exista
         return 'No se encontro el poema', 404
     #Eliminar poema

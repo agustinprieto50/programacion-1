@@ -1,6 +1,6 @@
 #Cambiar el nombre en la importación para clarificar y evitar conflictos
-from .usuario import Usuario as UsuarioResource
-from .usuario import Usuarios as UsuariosResource
+from .user import Usuario as UserResource
+from .user import Usuarios as UsersResource
 
 from .poema import Poema as PoemaResource
 from .poema import Poemas as PoemasResource
