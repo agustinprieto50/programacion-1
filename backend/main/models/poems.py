@@ -1,5 +1,4 @@
 from .. import db
-from . import users
 
 
 class Poem(db.Model):
