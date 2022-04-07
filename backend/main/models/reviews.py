@@ -22,7 +22,9 @@ class Review(db.Model):
     @staticmethod
     def from_json(json_string):
         id = json_string.get('id')
-        title = json_string.get('title')
-        content = json_string.get('content')
         user_id = json_string.get('user_id')
-        return Review(id=id,title=title,content=content,user_id=user_id)
+        poem_id = json_string.get('poem_id')
+        calification = json_string.get('calification')
+        comment = json_string.get('comment')
+
+        return Review(id=id,user_id=user_id,poem_id=poem_id,calification=calification,comment=comment)

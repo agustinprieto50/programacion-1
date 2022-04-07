@@ -23,19 +23,19 @@ def create_app():
     db.init_app(app)
     import main.resources as resources
     #Cargar a la API el Recurso Usuarios e indicar ruta
-    api.add_resource(resources.UserResource, '/users')
+    api.add_resource(resources.UsersResource, '/users')
     #Cargar a la API el Recurso Usuario e indicar ruta
     api.add_resource(resources.UserResource, '/user/<id>')
 
     #Cargar a la API el Recurso Poemas e indicar ruta
-    api.add_resource(resources.PoemasResource, '/poemas')
+    api.add_resource(resources.PoemsResource, '/poems')
     #Cargar a la API el Recurso Poema e indicar ruta
-    api.add_resource(resources.PoemaResource, '/poema/<id>')
+    api.add_resource(resources.PoemResource, '/poem/<id>')
 
     #Cargar a la API el Recurso Calificaciones e indicar ruta
-    api.add_resource(resources.CalificacionesResource, '/calificaciones')
+    api.add_resource(resources.ReviewsResource, '/reviews')
     #Cargar a la API el Recurso Calificacion e indicar ruta
-    api.add_resource(resources.CalificacionResource, '/calificacion/<id>')
+    api.add_resource(resources.ReviewResource, '/review/<id>')
 
     #Cargar la aplicación en la API de Flask Restful
     api.init_app(app)

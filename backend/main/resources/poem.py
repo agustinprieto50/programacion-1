@@ -4,7 +4,7 @@ from .. import db
 from main.models import PoemModel
 
 
-class PoemResource(Resource):
+class Poem(Resource):
     #Obtener poema
     def get(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
@@ -29,16 +29,15 @@ class PoemResource(Resource):
         return poem.to_json(), 201
         
 
-#poema Profesores
-class Poemas(Resource):
+class Poems(Resource):
     #Obtener lista de poemas
     def get(self):
         poems = db.session.query(PoemModel).all()
-        return jsonify([poem.to_json() for poem in poems]), 200
+        return jsonify([poem.to_json() for poem in poems])
 
     #Insertar poema
     def post(self):
-        user = PoemModel.from_json(request.get_json())
-        db.session.add(user)
+        poem = PoemModel.from_json(request.get_json())
+        db.session.add(poem)
         db.session.commit()
-        return user.to_json(),201
+        return poem.to_json(),201
