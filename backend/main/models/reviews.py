@@ -5,9 +5,10 @@ class Review(db.Model):
     
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, nullable = False)
-    poem_id = db.Column(db.Integer, nullable = False)
     calification = db.Column(db.Integer)
     comment = db.Column(db.String(1024))
+    poem_id = db.Column(db.Integer,db.ForeignKey('poem.id'),nullable = False)
+    poem = db.relationship('Poem',back_populates = "reviews",uselist = False,single_parent=True)
 
     def to_json(self):
         json_string = {
@@ -19,6 +20,13 @@ class Review(db.Model):
         }
         return json_string
 
+    def to_json_short(self):
+        json_string = {
+            'id':self.id,
+            'calification':self.calification,
+            'comment':self.comment
+        }
+        return json_string
     @staticmethod
     def from_json(json_string):
         id = json_string.get('id')

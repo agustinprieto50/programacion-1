@@ -1,4 +1,5 @@
 from .. import db
+from datetime import datetime
 
 
 class Poem(db.Model):
@@ -6,14 +7,32 @@ class Poem(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(100), nullable = False)
     content = db.Column(db.String(1024), nullable = False)
-    user_id = db.Column(db.Integer)
+    post_date = db.Column(db.DateTime,nullable = False,default = datetime.now() )
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
+    user = db.relationship('User',back_populates = "poems",uselist = False,single_parent=True)
+    poems = db.relationship('Poem',back_populates = 'user',cascade = 'all, delete-orphan')
+    reviews = db.relationship('Review',back_populates = 'poems',cascade ='all, delete-orphan')
+
+
 
     def to_json(self):
+        reviews = [review.to_json_short() for review in self.review]
         json_string = {
             'id':self.id,
             'title':self.title,
             'content':self.content,
-            'user_id':self.user_id
+            'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
+            'user': self.user.to_json_short(),
+            'reviews': reviews
+        }
+        return json_string
+    
+    def to_json_short(self):
+        json_string = {
+            'id':self.id,
+            'title':self.title,
+            'content':self.content,
+            'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S")
         }
         return json_string
 
