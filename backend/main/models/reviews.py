@@ -8,7 +8,8 @@ class Review(db.Model):
     calification = db.Column(db.Integer)
     comment = db.Column(db.String(1024))
     poem_id = db.Column(db.Integer,db.ForeignKey('poem.id'),nullable = False)
-    poem = db.relationship('Poem',back_populates = "reviews",uselist = False,single_parent=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable = False)
+
 
     def to_json(self):
         json_string = {

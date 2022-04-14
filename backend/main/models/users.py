@@ -6,8 +6,8 @@ class User(db.Model):
     alias = db.Column(db.String(100),nullable = False)
     email = db.Column(db.String(100),nullable = False)
     password = db.Column(db.String(100),nullable = False)
-    poems = db.relationship('Poem',back_populates = 'user',cascade = 'all, delete-orphan')
-
+    poems = db.relationship('Poem', back_populates='user', cascade='all, delete-orphan')
+    reviews = db.relationship('Review', back_populates='user', cascade='all, delete-orphan')
 
     def to_json(self):
         poems = [poem.to_json_short() for poem in self.poems]
