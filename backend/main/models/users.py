@@ -11,11 +11,15 @@ class User(db.Model):
 
     def to_json(self):
         poems = [poem.to_json_short() for poem in self.poems]
+        reviews = [review.to_json_short() for review in self.reviews]
         json_string = {
             'id':self.id,
             'alias':self.alias,
             'email':self.email,
-            'poems':poems
+            'poems':poems,
+            'poem_count':len(poems),
+            'reviews':reviews,
+            'review_count':len(reviews),
         }
         return json_string
     
@@ -29,8 +33,7 @@ class User(db.Model):
 
     @staticmethod
     def from_json(json_string):
-        id = json_string.get('id')
         alias = json_string.get('alias')
         email = json_string.get('email')
         password = json_string.get('password')
-        return User(id=id,alias=alias,email=email,password=password)
+        return User(alias=alias,email=email,password=password)
