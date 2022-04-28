@@ -61,8 +61,10 @@ class Users(Resource):
                     if value == 'alias[desc]':
                         users = users.order_by(UserModel.alias.desc())
                     #Por cantidad de poemas ascendente 
-#                    if value == 'poem_count' or value == 'poem_count[asc]':
-#                        users = users.order_by((users.outerjoin(UserModel.poems).group_by(UserModel.id)).func.count(PoemModel.id))
+                    if value == 'poem_count' or value == 'poem_count[asc]':
+                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
+                    if value == 'poem_count[desc]':
+                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
 
                         
         users = users.paginate(page,per_page,True,20)
