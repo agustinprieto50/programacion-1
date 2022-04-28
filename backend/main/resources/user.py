@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import jsonify, request
 from .. import db
-from main.models import UserModel,PoemModel
+from main.models import UserModel,PoemModel,ReviewModel
 from sqlalchemy import func
 
 #Recurso User
@@ -42,16 +42,28 @@ class Users(Resource):
                     page = int(value)
                 if key == "per_page":
                     per_page = int(value)
+            ##FILTROS##
+                #Por nombre 
                 if key == "alias":
                     users = users.filter(UserModel.alias.like("%"+value+"%"))
+                #Cantidad de poemas mayor a:
                 if key == "poem_count":
                     users=users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > value)
-                    print(users)
+                #Cantidad de poemas mayor a:
+                if key == "review_count":
+                    users=users.outerjoin(UserModel.reviews).group_by(UserModel.id).having(func.count(ReviewModel.id) > value)
+            ##ORDENAMIENTO##
                 if key == "order_by":
+                    #Por nombre ascendente
+                    if value == 'alias' or value == 'alias[asc]':
+                        users = users.order_by(UserModel.alias)
+                    #Por nombre descendente    
                     if value == 'alias[desc]':
                         users = users.order_by(UserModel.alias.desc())
-                    if value == 'alias':
-                        users = users.order_by(UserModel.alias)
+                    #Por cantidad de poemas ascendente 
+#                    if value == 'poem_count' or value == 'poem_count[asc]':
+#                        users = users.order_by((users.outerjoin(UserModel.poems).group_by(UserModel.id)).func.count(PoemModel.id))
+
                         
         users = users.paginate(page,per_page,True,20)
         return jsonify({'users':[user.to_json() for user in users.items],

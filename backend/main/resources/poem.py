@@ -1,7 +1,8 @@
 from flask_restful import Resource
 from flask import jsonify, request
 from .. import db
-from main.models import PoemModel
+from main.models import UserModel,PoemModel,ReviewModel
+from sqlalchemy import func
 
 
 class Poem(Resource):
@@ -32,7 +33,17 @@ class Poem(Resource):
 class Poems(Resource):
     #Obtener lista de poemas
     def get(self):
-        poems = db.session.query(PoemModel).all()
+        page = 1
+        per_page = 5
+        poems = db.session.query(PoemModel)
+        if request.get_json():
+            filters=request.get_json().items()
+            for key,value in filters:
+                if key == "page":
+                    page = int(value)
+                if key == "per_page":
+                    per_page = int(value)
+                
         return jsonify([poem.to_json() for poem in poems])
 
     #Insertar poema
