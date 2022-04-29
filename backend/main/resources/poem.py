@@ -34,7 +34,7 @@ class Poems(Resource):
     #Obtener lista de poemas
     def get(self):
         page = 1
-        per_page = 5
+        per_page = 20
         poems = db.session.query(PoemModel)
         if request.get_json():
             filters=request.get_json().items()
@@ -43,8 +43,59 @@ class Poems(Resource):
                     page = int(value)
                 if key == "per_page":
                     per_page = int(value)
+            ##FILTROS##
+                #Por nombre 
+                if key == "alias":
+                    poems = poems.filter(PoemModel.user.has(UserModel.alias.like("%"+value+"%")))
                 
-        return jsonify([poem.to_json() for poem in poems])
+                if key == "title":
+                    poems = poems.filter(PoemModel.title == value)
+
+                if key == "date[gt]":
+                    poems = poems.filter(PoemModel.post_date > value)
+
+                if key == "date[lt]":
+                    poems = poems.filter(PoemModel.post_date < value)
+
+                #Por calificacion mayor a value:
+                if key == "calification[gt]":
+                    # poems = poems.filter(PoemModel.review.has(ReviewModel.calification > int(value)))
+                    poems = poems.outerjoin(PoemModel.review).filter(ReviewModel.calification > int(value))
+
+                #Por calificacion menor a value:
+                if key == "calification[lt]":
+                    # poems = poems.filter(PoemModel.review.has(ReviewModel.calification > int(value)))
+                    poems = poems.outerjoin(PoemModel.review).filter(ReviewModel.calification < int(value))
+
+            ##ORDENAMIENTO##
+                if key == "order_by":
+                    #Por nombre ascendente
+                    if value == 'title' or value == 'title[asc]':
+                        poems = poems.order_by(PoemModel.title)
+                    #Por nombre descendente    
+                    if value == 'title[desc]':
+                        poems = poems.order_by(PoemModel.title.desc())
+
+                    if value == 'calification' or value == 'calification[asc]':
+                        poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(ReviewModel.calification)
+                    if value == 'calification[desc]':
+                        poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(ReviewModel.calification.desc())
+                    if value == 'date' or value == 'date[asc]':
+                        poems = poems.order_by(PoemModel.post_date)
+                    if value == 'date[asc]':
+                        poems = poems.order_by(PoemModel.post_date.desc())
+                    
+            #         #Por cantidad de poemas ascendente 
+            #         if value == 'poem_count' or value == 'poem_count[asc]':
+            #             users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
+            #         if value == 'poem_count[desc]':
+            #             users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
+
+                        
+        poems = poems.paginate(page,per_page,True,20)
+        return jsonify({'poems':[poem.to_json() for poem in poems.items],
+        'total':poems.total,'pages':poems.pages,'page':page})
+                
 
     #Insertar poema
     def post(self):

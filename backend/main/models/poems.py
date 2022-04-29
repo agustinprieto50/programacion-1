@@ -9,7 +9,10 @@ class Poem(db.Model):
     content = db.Column(db.String(1024), nullable = False)
     post_date = db.Column(db.DateTime,nullable = False,default = datetime.now() )
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
-    review = db.relationship('Review', backref = 'poem',cascade ='all, delete-orphan')
+    user = db.relationship('User',back_populates="poems")
+    review = db.relationship('Review',back_populates="poem")
+    
+    # review = db.relationship('Review', backref = 'poem',cascade ='all, delete-orphan')
 
 
 
@@ -20,7 +23,7 @@ class Poem(db.Model):
             'title':self.title,
             'content':self.content,
             'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
-            'user': self.user.to_json_short(),
+            'user': self.user_id, 
             'reviews': reviews
         }
         return json_string
