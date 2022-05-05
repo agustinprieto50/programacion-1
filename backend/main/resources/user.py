@@ -3,6 +3,8 @@ from flask import jsonify, request
 from .. import db
 from main.models import UserModel,PoemModel,ReviewModel
 from sqlalchemy import func
+from flask_jwt_extended import jwt_required
+from main.auth.decorators import admin_required
 
 #Recurso User
 class User(Resource):
@@ -12,6 +14,7 @@ class User(Resource):
         user = db.session.query(UserModel).get_or_404(id)
         return user.to_json()
     #Eliminar usuario
+    @admin_required
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         db.session.delete(user)
