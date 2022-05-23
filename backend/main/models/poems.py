@@ -11,7 +11,6 @@ class Poem(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
     user = db.relationship('User',back_populates="poems")
     review = db.relationship('Review',back_populates="poem")
-    
     # review = db.relationship('Review', backref = 'poem',cascade ='all, delete-orphan')
 
 

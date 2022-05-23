@@ -3,16 +3,24 @@ from flask import jsonify, request
 from .. import db
 from main.models import UserModel,PoemModel,ReviewModel
 from sqlalchemy import func
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required,get_jwt_identity,get_jwt
 from main.auth.decorators import admin_required
 
 #Recurso User
 class User(Resource):
 
     #Obtener usuario
+    @jwt_required(optional=True)
     def get(self, id):
         user = db.session.query(UserModel).get_or_404(id)
-        return user.to_json()
+        token_id = get_jwt_identity()
+        claims = get_jwt()
+        if token_id == user.id or claims['admin']:
+            #con mail
+            return user.to_json()
+        else:
+            #sin mail
+            return user.to_json()
     #Eliminar usuario
     @admin_required
     def delete(self, id):
