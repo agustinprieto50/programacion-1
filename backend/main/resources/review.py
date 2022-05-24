@@ -1,7 +1,12 @@
+from operator import and_
 from flask_restful import Resource
 from flask import jsonify, request
+import jwt
+from sqlalchemy import null
 from .. import db
-from main.models import ReviewModel
+from main.models import ReviewModel, PoemModel
+from flask_jwt_extended import jwt_required,get_jwt_identity,get_jwt
+from main.auth.decorators import admin_required
 
 
 class Review(Resource):
@@ -31,9 +36,22 @@ class Reviews(Resource):
 
 
     #Insertar calificacion
+    @jwt_required()
     def post(self):
+        user_id = get_jwt_identity()
         #Obtener datos de la solicitud
         review = ReviewModel.from_json(request.get_json())
-        db.session.add(review)
-        db.session.commit()
-        return review.to_json(), 201
+        #Obtener id de poema
+        poem_id = review.poem_id
+        #Obtener el poema al que se le agregara una calificacion
+        poem = db.session.query(PoemModel).get_or_404(poem_id)
+        #Devuelve una lista con las reviews creadas por el user logueado. [] si el user aun no creo ningun
+        existing_reviews = db.session.query(ReviewModel).filter(and_(ReviewModel.poem_id == poem_id, ReviewModel.user_id == user_id)).all()
+        #Si el autor del poema es diferente a quien realiza el review, entonces si se crea
+        if user_id != poem.user_id and existing_reviews == []:
+            db.session.add(review)
+            db.session.commit()
+            return review.to_json(), 201
+        # Si el autor coincide con quien realiza la calificacion, entonces se devuelve un 403
+        else:
+            return 'not allowed', 403
