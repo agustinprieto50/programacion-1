@@ -10,8 +10,7 @@ class Poem(db.Model):
     post_date = db.Column(db.DateTime,nullable = False,default = datetime.now() )
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
     user = db.relationship('User',back_populates="poems")
-    review = db.relationship('Review',back_populates="poem")
-    # review = db.relationship('Review', backref = 'poem',cascade ='all, delete-orphan')
+    review = db.relationship('Review',back_populates="poem", cascade='all, delete-orphan')
 
 
 

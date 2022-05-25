@@ -47,6 +47,21 @@ class User(db.Model):
         }
         return json_string
 
+    def to_json_no_mail(self):
+        poems = [poem.to_json_short() for poem in self.poems]
+        reviews = [review.to_json_short() for review in self.reviews]
+        json_string = {
+            'id':self.id,
+            'alias':self.alias,
+            'email':self.email,
+            'poems':poems,
+            'poem_count':len(poems),
+            'reviews':reviews,
+            'review_count':len(reviews),
+        }
+        return json_string
+
+
     @staticmethod
     def from_json(json_string):
         alias = json_string.get('alias')

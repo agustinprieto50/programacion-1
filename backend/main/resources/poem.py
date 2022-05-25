@@ -29,7 +29,6 @@ class Poem(Resource):
             return f'No permitido', 403
 
         
-        
     #Modificar poema
     def put(self, id):
         poem = db.session.query(PoemModel).get_or_404(id)
@@ -116,7 +115,7 @@ class Poems(Resource):
         poem = PoemModel.from_json(request.get_json())
         user_id =  get_jwt_identity()
         poem.user_id = user_id 
-        poem = db.session.query(UserModel).get_or_404(user_id)
+        user = db.session.query(UserModel).get_or_404(user_id)
         poem_count = len(user.poems)
         review_count = len(user.reviews)
         ratio = 0

@@ -10,7 +10,7 @@ class Review(db.Model):
     poem_id = db.Column(db.Integer,db.ForeignKey('poem.id'),nullable = False)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable = False)
     poem = db.relationship('Poem',back_populates="review")
-    user = db.relationship('User',back_populates="reviews")
+    user = db.relationship('User',back_populates="reviews",)
     
 
     def to_json(self):

@@ -20,24 +20,36 @@ class User(Resource):
             return user.to_json()
         else:
             #sin mail
-            return user.to_json()
+            return user.to_json_no_mail()
+
+        
     #Eliminar usuario
     @admin_required
     def delete(self, id):
         user = db.session.query(UserModel).get_or_404(id)
         db.session.delete(user)
-        db.session.commit()
-        return f'Se elimino el usuario con id: {id}', 204
+        try:
+            db.session.commit()
+        except:
+            db.session.rollback()
+            raise
+        return f'Se elimino el usuario con id: {id}', 200
+
+    
     #Modificar usuario
+    @jwt_required(optional=True)
     def put(self, id):
+        logged_in_user = get_jwt_identity()
+        claims = get_jwt()
         user = db.session.query(UserModel).get_or_404(id)
         data = request.get_json().items()
         for key, value in data:
             setattr(user, key, value)
-        db.session.add(user)
-        db.session.commit()
-        return user.to_json() , 201
-
+        if user.id == logged_in_user or claims['admin']:
+            db.session.add(user)
+            db.session.commit()
+            return user.to_json() , 201
+        return 'Not allowed', 403
 
 #Recurso Users
 class Users(Resource):
@@ -81,7 +93,12 @@ class Users(Resource):
         users = users.paginate(page,per_page,True,20)
         return jsonify({'users':[user.to_json() for user in users.items],
         'total':users.total,'pages':users.pages,'page':page})
+
+    #Poetas: Agregar poeta(admin), eliminar poeta(admin), modificar poeta(admin o poeta su propio perfil), ver poeta(cualquiera pero el admin debe poder ver el email)
+
+
     #Insertar usuario
+    @admin_required
     def post(self):
         user = UserModel.from_json(request.get_json())
         db.session.add(user)

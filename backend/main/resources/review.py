@@ -2,7 +2,7 @@ from operator import and_
 from flask_restful import Resource
 from flask import jsonify, request
 import jwt
-from sqlalchemy import null
+from sqlalchemy import delete, null
 from .. import db
 from main.models import ReviewModel, PoemModel
 from flask_jwt_extended import jwt_required,get_jwt_identity,get_jwt
@@ -29,11 +29,25 @@ class Review(Resource):
 #Recurso Calificaciones
 class Reviews(Resource):
     #Obtener lista de calificaciones
+    @jwt_required(optional=True)
     def get(self):
         reviews= db.session.query(ReviewModel).all()
         return jsonify([review.to_json() for review in reviews])
 
-
+    #Eliminar poema
+    @jwt_required()
+    def delete(self, id):
+        user_id =  get_jwt_identity()
+        review = db.session.query(ReviewModel).get_or_404(id)
+        claims = get_jwt()
+        if review.user_id == user_id or claims['admin'] == True:
+            db.session.delete(review)
+            db.session.commit()
+            return f'Se elimino la review con id: {id}', 204
+            
+        else:
+            db.session.commit()
+            return 'Not allowed', 403
 
     #Insertar calificacion
     @jwt_required()
@@ -54,4 +68,10 @@ class Reviews(Resource):
             return review.to_json(), 201
         # Si el autor coincide con quien realiza la calificacion, entonces se devuelve un 403
         else:
-            return 'not allowed', 403
+            return 'Not allowed', 403
+
+    
+
+
+    
+
