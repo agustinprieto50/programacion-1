@@ -24,6 +24,21 @@ class Review(Resource):
         db.session.add(review)
         db.session.commit()
         return review.to_json() , 201
+    
+    #Eliminar poema
+    @jwt_required()
+    def delete(self, id):
+        user_id =  get_jwt_identity()
+        review = db.session.query(ReviewModel).get_or_404(id)
+        claims = get_jwt()
+        if review.user_id == user_id or claims['admin'] == True:
+            db.session.delete(review)
+            db.session.commit()
+            return f'Se elimino la review con id: {id}', 200
+            
+        else:
+            db.session.commit()
+            return 'Not allowed', 403
 
 
 #Recurso Calificaciones
@@ -34,20 +49,7 @@ class Reviews(Resource):
         reviews= db.session.query(ReviewModel).all()
         return jsonify([review.to_json() for review in reviews])
 
-    #Eliminar poema
-    @jwt_required()
-    def delete(self, id):
-        user_id =  get_jwt_identity()
-        review = db.session.query(ReviewModel).get_or_404(id)
-        claims = get_jwt()
-        if review.user_id == user_id or claims['admin'] == True:
-            db.session.delete(review)
-            db.session.commit()
-            return f'Se elimino la review con id: {id}', 204
-            
-        else:
-            db.session.commit()
-            return 'Not allowed', 403
+    
 
     #Insertar calificacion
     @jwt_required()
@@ -55,6 +57,7 @@ class Reviews(Resource):
         user_id = get_jwt_identity()
         #Obtener datos de la solicitud
         review = ReviewModel.from_json(request.get_json())
+        review.user_id = user_id
         #Obtener id de poema
         poem_id = review.poem_id
         #Obtener el poema al que se le agregara una calificacion

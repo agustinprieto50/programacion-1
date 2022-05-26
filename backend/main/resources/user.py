@@ -15,9 +15,10 @@ class User(Resource):
         user = db.session.query(UserModel).get_or_404(id)
         token_id = get_jwt_identity()
         claims = get_jwt()
-        if token_id == user.id or claims['admin']:
+        if token_id:
+            if token_id == user.id or claims['admin']:
             #con mail
-            return user.to_json()
+                return user.to_json()
         else:
             #sin mail
             return user.to_json_no_mail()

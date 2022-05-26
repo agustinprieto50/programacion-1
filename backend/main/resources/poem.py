@@ -22,7 +22,7 @@ class Poem(Resource):
         if poem.user_id == user_id or claims['admin'] == True:
             db.session.delete(poem)
             db.session.commit()
-            return f'Se elimino el poema con id: {id}', 204
+            return f'Se elimino el poema con id: {id}', 200
             
         else:
             db.session.commit()

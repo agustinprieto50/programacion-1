@@ -53,7 +53,6 @@ class User(db.Model):
         json_string = {
             'id':self.id,
             'alias':self.alias,
-            'email':self.email,
             'poems':poems,
             'poem_count':len(poems),
             'reviews':reviews,
