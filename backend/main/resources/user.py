@@ -19,6 +19,10 @@ class User(Resource):
             if token_id == user.id or claims['admin']:
             #con mail
                 return user.to_json()
+            else:
+                #sin mail
+                return user.to_json_no_mail()
+
         else:
             #sin mail
             return user.to_json_no_mail()

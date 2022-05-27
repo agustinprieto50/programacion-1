@@ -25,7 +25,7 @@ class Review(Resource):
         db.session.commit()
         return review.to_json() , 201
     
-    #Eliminar poema
+    #Eliminar calificacion
     @jwt_required()
     def delete(self, id):
         user_id =  get_jwt_identity()
