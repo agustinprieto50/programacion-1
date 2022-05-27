@@ -73,6 +73,9 @@ class Reviews(Resource):
                 db.session.commit()
                 result = sendmail([review.poem.user.email],"Nueva Calificacion",'new_review',review = review)
                 return review.to_json(), 201
+            except Exception as error:
+                #db.session.rollback()
+                return str(error),409
         # Si el autor coincide con quien realiza la calificacion, entonces se devuelve un 403
         else:
             return 'Not allowed', 403
