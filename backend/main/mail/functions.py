@@ -12,4 +12,4 @@ def sendmail(to,subject,template,**kwargs):
     except SMTPException as e:
         print(e)
         return'Mail delivery failed'
-
+    return True
