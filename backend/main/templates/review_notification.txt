@@ -1,0 +1,4 @@
+Hola {{review.poem.alias}}
+Tu poema {{review.poem.title}} recibio una calificacion 
+Puntaje:{{review.calification}}
+Reviw:{{review.message}}

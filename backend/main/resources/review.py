@@ -1,4 +1,5 @@
 from operator import and_
+from unittest import result
 from flask_restful import Resource
 from flask import jsonify, request
 import jwt
@@ -7,6 +8,7 @@ from .. import db
 from main.models import ReviewModel, PoemModel
 from flask_jwt_extended import jwt_required,get_jwt_identity,get_jwt
 from main.auth.decorators import admin_required
+from main.mail.functions import sendmail
 
 
 class Review(Resource):
@@ -66,9 +68,11 @@ class Reviews(Resource):
         existing_reviews = db.session.query(ReviewModel).filter(and_(ReviewModel.poem_id == poem_id, ReviewModel.user_id == user_id)).all()
         #Si el autor del poema es diferente a quien realiza el review, entonces si se crea
         if user_id != poem.user_id and existing_reviews == []:
-            db.session.add(review)
-            db.session.commit()
-            return review.to_json(), 201
+            try:
+                db.session.add(review)
+                db.session.commit()
+                result = sendmail([review.poem.user.email],"Nueva Calificacion",'new_review',review = review)
+                return review.to_json(), 201
         # Si el autor coincide con quien realiza la calificacion, entonces se devuelve un 403
         else:
             return 'Not allowed', 403
