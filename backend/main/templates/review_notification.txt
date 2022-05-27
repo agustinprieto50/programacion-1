@@ -1,4 +1,4 @@
 Hola {{review.poem.user.alias}}
 Tu poema {{review.poem.title}} recibio una calificacion 
 Puntaje:{{review.calification}}
-Review:{{review.message}}
+Review:{{review.comment}}

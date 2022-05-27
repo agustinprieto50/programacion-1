@@ -67,11 +67,12 @@ class Reviews(Resource):
         #Devuelve una lista con las reviews creadas por el user logueado. [] si el user aun no creo ningun
         existing_reviews = db.session.query(ReviewModel).filter(and_(ReviewModel.poem_id == poem_id, ReviewModel.user_id == user_id)).all()
         #Si el autor del poema es diferente a quien realiza el review, entonces si se crea
+        
         if user_id != poem.user_id and existing_reviews == []:
             try:
                 db.session.add(review)
                 db.session.commit()
-                result = sendmail([review.poem.user.email],"Nueva Calificacion",'new_review',review = review)
+                result = sendmail([review.poem.user.email],"Nueva Calificacion",'review_notification',review = review)
                 return review.to_json(), 201
             except Exception as error:
                 #db.session.rollback()

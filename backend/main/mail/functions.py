@@ -5,7 +5,7 @@ from flask_mail import Message
 from smtplib import SMTP, SMTPException
 
 def sendmail(to,subject,template,**kwargs):
-    msg = Message(subject,sender=current_app.config['FLASKY MAIL SENDER'],recipients = to)
+    msg = Message(subject,sender=current_app.config['FLASKY_MAIL_SENDER'],recipients = to)
     try:
         msg.body=render_template(template+'.txt',**kwargs)
         result = mailsender.send(msg) #enviar
