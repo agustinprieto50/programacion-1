@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>Programación 1</title>
+
+        <!-- Bootstrap --->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        
+        <!-- font-awesome (iconos)-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        
+        <!-- Style propios -->
+        <link rel="stylesheet" href="css/style.css">
+    
+        <meta name="theme-color" content="#black">
+    </head>
+    <body>
+        
+        <div class="container">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <h2>Poemas</h2>
+              <div class="col-md text-end ">
+                <button type="button" class="btn btn-outline-primary me-2">Login</button>
+                <button type="button" class="btn btn-primary">Sign-up</button>
+              </div>
+            </header>
+          </div>
+
+    <main style="min-height: 80vh;">
+    
+    <div class="container d-flex gap-1 justify-content-left">
+        <div class="form-group">
+            <label for="Autor">Autor</label>
+            <input type="text" name="campoautor" id="autor" class="form-control">
+            
+        </div>
+        <div class="form-group">
+        <label for="Titulo">Titulo</label>
+            <input type="text" name="campotitulo" id="titulo" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="fecha">Filtrar por fecha</label>
+            <input type="date" name="campofecha" id="fecha" class="form-control">
+         </div>
+    <div class="container d-flex gap-1 justify-content-left flex-row-reverse">
+        <div class="form-group">
+            <label for="desplegable">Items por pagina</label>
+            <select name="desplegable" id="desplegable" class="form-control">
+              <option value="">--Elegir una opción --</option>
+              <option value="opcion1">10</option>
+              <option value="opcion2">20</option>
+              <option value="opcion3">30</option>
+            </select>
+         </div>
+        <div class="form-group">
+            <label for="desplegable">Ordenar por</label>
+            <select name="desplegable" id="desplegable" class="form-control">
+              <option value="">--Elegir una opción --</option>
+              <option value="opcion1">Titulo (ascendente)</option>
+              <option value="opcion2">Titulo (descendente)</option>
+              <option value="opcion3">Calificacion (ascendente)</option>
+              <option value="opcion4">Calificacion (descendente)</option>
+              <option value="opcion5">Fecha (ascendente)</option>
+              <option value="opcion6">Fecha (descendente)</option>
+            </select>
+         </div>    
+
+    </div>
+
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col-special">
+            <div class="card shadow-sm">
+                
+                <div class="card-body d-block">
+                <h5 class="card-title">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">by</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem</p>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 2</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 3</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 4</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 5</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 6</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 7</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 8</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Poema" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Poema 9</text></svg>
+
+                <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                    </div>
+                    <small class="text-muted">18/09/2022</small>
+                    <small class="text-muted">
+                        <div class="rating">
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+                    </small>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <nav class="mt-3" ria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            </ul>
+        </nav>
+    </div>
+</main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+    </body>
+</html>
