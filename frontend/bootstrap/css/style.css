@@ -1,9 +1,7 @@
-.text-truncate-container p {
-    -webkit-line-clamp: 3;
+.multi-line {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    -webkit-line-clamp: 11;
     overflow: hidden;
-}
-.col-special {
-    overflow: hidden;
+    /background-color: #a6a9ab;/
   }
