@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>Programación 1</title>
+
+        <!-- Bootstrap --->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        
+        <!-- font-awesome (iconos)-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        
+        <!-- Style propios -->
+        <link rel="stylesheet" href="/app/app.component.css">
+    
+        <meta name="theme-color" content="#black">
+    </head>
+    <body>
+        
+        <div class="container" id="head">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <h2>Poemas</h2>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-lg" data-bs-toggle="dropdown" aria-expanded="false" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          </svg>
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Ver Pefil</a></li>
+                        <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                        <li><a class="dropdown-item" href="#">Ver Poemas</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                    </ul>
+                  </div>
+            </header>
+          </div>
+
+
+    <main style="min-height: 80vh;">
+    
+        <div class="d-flex flex-column">
+            <div class="container ">
+                <h1>Poem Title, by <a href="/user">User</a></h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid accusamus tempore eos enim omnis eum error ut, beatae optio quasi deleniti, vitae laudantium praesentium! Laboriosam animi excepturi dolorum mollitia vel.
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quam iure quibusdam aliquid? Accusamus distinctio repellat ducimus quis architecto perferendis earum obcaecati impedit alias inventore, beatae eveniet temporibus, ipsa ut?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi error rerum, incidunt voluptatem nisi iure quibusdam pariatur, officia eius quaerat, alias laboriosam est. Et quibusdam quaerat quae laudantium dolor aspernatur.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim est placeat aspernatur, eos expedita sit praesentium laborum minus eius et. Facilis ducimus ipsam officia dolorum obcaecati porro voluptatem nesciunt ad?
+                </p>
+            </div>
+            <div class="container d-flex gap-1 justify-content-left">
+                <div class="container d-flex flex-row gap-5 align-items-center">
+            
+                        <h1>Reseñas</h1>
+                        <button type="button" class="btn btn-sm btn-primary" style="height:50%" data-bs-toggle="modal" data-bs-target="#modalNewReview">Agregar Reseña</button>
+                
+                        <div class="modal fade" id="modalNewReview" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                              <div class="modal-content">
+                                  <!--Form -->
+                                  <form action="">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title">Agregar Reseña </h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                                                                        
+                                            <label for="Reseña">Calificacion del poema</label>
+                                            <div class="rating" id="Reseña">
+                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                
+                                            <div class="form-group">
+                                              <label for="exampleFormControlTextarea1">Comentario</label>
+                                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    <div class="modal-footer pt-4 justify-content-left"> 
+                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button> 
+                                        <button type="button" class="btn btn-primary">Enviar</button>                
+                                    </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        
+                </div> 
+                <!-- items por pagina -->
+                <app-items-per-page></app-items-per-page>
+            </div>
+            
+                <div class="container rating-block">
+					<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+					<div class="rating">
+                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+				</div>
+         
+                <div class="container col" style="margin-top:1vh;">
+                    <div class="card shadow-sm">
+                        <div class="card-body d-block">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">
+                                    <div class="rating">
+                                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                        <i class="fa-regular fa-star"></i>
+                                    </div>
+                                </small>
+                            </div>
+                            <p class="card-text multi-line">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem </p>
+                            <h6 class="card-subtitle mb-2 text-muted">by <a href="user.html">User</a></h6>
+                        </div>
+                    </div>
+                        <div class="card shadow-sm">
+                            <div class="card-body d-block">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">
+                                        <div class="rating">
+                                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                            <i class="fa-regular fa-star"></i>
+                                        </div>
+                                    </small>
+                                </div>
+                                <p class="card-text multi-line">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem </p>
+                                <h6 class="card-subtitle mb-2 text-muted">by <a href="/user">User</a></h6>
+                            </div>
+                        </div>
+
+                            <div class="card shadow-sm">
+                                <div class="card-body d-block">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">
+                                            <div class="rating">
+                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                                <i class="fa-regular fa-star"></i>
+                                            </div>
+                                        </small>
+                                    </div>
+                                    <p class="card-text multi-line">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem </p>
+                                    <h6 class="card-subtitle mb-2 text-muted">by <a href="/user">User</a></h6>
+                                </div>
+                            </div>
+        
+
+                    </div>
+                    <nav class="mt-3" ria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        </ul>
+                    </nav>
+                </div>
+        <!-- </div> -->
+   
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+    </body>
+</html>
