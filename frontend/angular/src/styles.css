@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+.multi-line {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 11;
+    overflow: hidden;
+  }

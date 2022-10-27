@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>Programación 1</title>
+        <meta name="theme-color" content="#black">
+    </head>
+    <body>
+        
+        <!-- Signed-In Header -->
+       <app-singed-in-header></app-singed-in-header>
+
+
+    <main style="min-height: 80vh;">
+    
+    <div class="container d-flex gap-1 justify-content-left">
+        <!-- Boton Add Peom -->
+        <app-add-poem-btn></app-add-poem-btn>
+        <div class="container d-flex gap-1 justify-content-left flex-row-reverse">
+            <!-- Items per Page -->
+            <app-items-per-page></app-items-per-page>
+        </div>
+
+    </div>
+<!-- Modal Write Poem -->
+<app-add-poem-form></app-add-poem-form>
+
+
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+       <!-- Poemas -->
+       <app-poem-card></app-poem-card>
+        </div>
+        <!-- Pagination -->
+        <app-pagination></app-pagination>
+    </div>
+</main>
+
+    </body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <title>Usuarios</title>
+
+        <meta name="theme-color" content="#black">
+    </head>
+    <body>
+        
+        <div class="container">
+            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <h2>Usuarios</h2>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-lg" data-bs-toggle="dropdown" aria-expanded="false" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                          </svg>
+                      <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Ver Pefil</a></li>
+                        <li><a class="dropdown-item" href="#">Configuracion</a></li>
+                        <li><a class="dropdown-item" href="#">Ver Poemas</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
+                    </ul>
+                  </div>
+            </header>
+          </div>
+
+    <main style="min-height: 80vh;">
+    
+    <div class="container d-flex gap-1 justify-content-left">
+        <div class="form-group">
+            <label for="Autor">Autor</label>
+            <input type="text" name="campoautor" id="autor" class="form-control">
+            
+        </div>
+        <div class="form-group">
+        <label for="Titulo">Cantidad de poemas mayor a</label>
+            <input type="text" name="campotitulo" id="titulo" class="form-control">
+        </div>
+        <div class="form-group">
+        <label for="Titulo">Cantidad de reviews mayor a</label>
+            <input type="text" name="campotitulo" id="titulo" class="form-control">
+        </div>
+    </div>
+    <div class="container d-flex gap-1 justify-content-center">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Usuario(Alias)</th>
+                <th scope="col">email</th>
+                <th scope="col">Cantidad de Poemas</th>
+                <th scope="col">Cantidad de reviews</th>
+                <th scope="col">ADMIN</th>
+                <th scope="col">Eliminar Usuario</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+              <tr>
+                <th scope="col">1</th>
+                <td>Mark</td>
+                <td>Mark@gmail</td>
+                <td>12</td>
+                <td>24</td>
+                <td><div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                    </label>
+                  </div></td>
+                  <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="container d-flex gap-1 justify-content-center">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+        </div>
+
+</main>
+
+
+    </body>
+</html>
