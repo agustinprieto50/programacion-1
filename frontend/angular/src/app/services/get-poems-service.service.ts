@@ -6,9 +6,10 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class GetPoemsServiceService {
-  url = "/"
-  constructor(private http: HttpClient) { }
-  getPoemsAll() {
+  url:any
+  constructor(private http: HttpClient ) { }
+  getPoemsAll(parameters:any) {
+    this.url = "/api/poems/" + parameters
     return this.http.get(this.url)
   }
 }

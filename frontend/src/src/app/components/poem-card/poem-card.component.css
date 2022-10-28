@@ -1,7 +1,0 @@
-.multi-line {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 11;
-    overflow: hidden;
-    /*background-color: #a6a9ab;*/
-  }
