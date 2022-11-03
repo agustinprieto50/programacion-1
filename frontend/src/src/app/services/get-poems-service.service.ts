@@ -9,7 +9,7 @@ export class GetPoemsServiceService {
   url:any
   constructor(private http: HttpClient ) { }
   getPoemsAll(parameters:any) {
-    this.url = "/api/poems/" + parameters
+    this.url = "/api/poems/per_page=20"
     return this.http.get(this.url)
   }
 }
