@@ -19,6 +19,7 @@ import { SingedInHeaderComponent } from './components/singed-in-header/singed-in
 import { ItemsPerPageComponent } from './components/items-per-page/items-per-page.component';
 import { AddPoemBtnComponent } from './components/add-poem-btn/add-poem-btn.component';
 import { AddPoemFormComponent } from './components/add-poem-form/add-poem-form.component';
+import { OrderByComponent } from './components/order-by/order-by.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AddPoemFormComponent } from './components/add-poem-form/add-poem-form.c
     SingedInHeaderComponent,
     ItemsPerPageComponent,
     AddPoemBtnComponent,
-    AddPoemFormComponent
+    AddPoemFormComponent,
+    OrderByComponent
   ],
   imports: [
     BrowserModule,

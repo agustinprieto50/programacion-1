@@ -11,7 +11,7 @@ import { UserCrudComponent } from './pages/user-crud/user-crud.component'
 
 const routes: Routes = [
   // { path: '', component: HomeComponent},
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'signed-in', component: SignedInComponent},
   { path: 'view-poem', component: ViewPoemComponent},
   { path: 'user', component: UserComponent},

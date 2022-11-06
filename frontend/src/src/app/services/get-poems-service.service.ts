@@ -8,8 +8,8 @@ import { HttpClient } from '@angular/common/http';
 export class GetPoemsServiceService {
   url:any
   constructor(private http: HttpClient ) { }
-  getPoemsAll(parameters:any) {
-    this.url = "/api/poems/per_page=20"
+  getPoemsAll(parameters:string) {
+    this.url = `/api/poems/${parameters}`
     return this.http.get(this.url)
   }
 }

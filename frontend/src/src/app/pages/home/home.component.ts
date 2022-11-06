@@ -13,8 +13,7 @@ export class HomeComponent implements OnInit {
   constructor(private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.params = this.route.snapshot.paramMap.get(encodeURIComponent('parameters'));
-    console.log(encodeURIComponent(this.params))
+    this.params = "per_page=20"
   }
 
 }

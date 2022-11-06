@@ -1,0 +1,12 @@
+<div class="form-group">
+    <label for="desplegable">Ordenar por</label>
+    <select #options (change)="onSelected(options.value)" name="desplegable" id="desplegable" class="form-control">
+      <option value="">--Elegir una opción --</option>
+      <option value="title">Titulo (ascendente)</option>
+      <option value="title[desc]">Titulo (descendente)</option>
+      <option value="calification">Calificacion (ascendente)</option>
+      <option value="calification[desc]">Calificacion (descendente)</option>
+      <option value="date">Fecha (ascendente)</option>
+      <option value="date[asc]">Fecha (descendente)</option>
+    </select>
+ </div> 
