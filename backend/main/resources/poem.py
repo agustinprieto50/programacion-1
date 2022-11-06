@@ -62,37 +62,38 @@ class Poems(Resource):
                 page = int(value)
             if key == "per_page":
                 per_page = int(value)
-            if key == 'alias':
-                poems = poems.filter(PoemModel.user.has(UserModel.alias.like("%"+value+"%")))
-            if key == 'title':
-                poems = poems.filter(PoemModel.title == value)
-            if key == 'date[gt]':
-                poems = poems.filter(PoemModel.post_date > value)
-            if key == 'date[lt]':
-                poems = poems.filter(PoemModel.post_date < value)
-            if key == 'calification[gt]':
-                poems = poems.outerjoin(PoemModel.review).filter(ReviewModel.calification > int(value))
-            if key == "calification[lt]":
-                poems = poems.outerjoin(PoemModel.review).filter(ReviewModel.calification < int(value))
-            if key == "order_by":
-                if value == 'title' or value == 'title[asc]':
-                    poems = poems.order_by(PoemModel.title)
-                #Por nombre descendente    
-                if value == 'title[desc]':
-                    poems = poems.order_by(PoemModel.title.desc())
-                if value == 'calification' or value == 'calification[asc]':
-                    poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(ReviewModel.calification)
-                if value == 'calification[desc]':
-                    poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(ReviewModel.calification.desc())
-                if value == 'date' or value == 'date[asc]':
-                    poems = poems.order_by(PoemModel.post_date)
-                if value == 'date[asc]':
-                    poems = poems.order_by(PoemModel.post_date.desc())
-                #Por cantidad de poemas ascendente 
-                if value == 'poem_count' or value == 'poem_count[asc]':
-                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
-                if value == 'poem_count[desc]':
-                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
+            if not user_id:
+                if key == 'alias':
+                    poems = poems.filter(PoemModel.user.has(UserModel.alias.like("%"+value+"%")))
+                if key == 'title':
+                    poems = poems.filter(PoemModel.title == value)
+                if key == 'date[gt]':
+                    poems = poems.filter(PoemModel.post_date > value)
+                if key == 'date[lt]':
+                    poems = poems.filter(PoemModel.post_date < value)
+                if key == 'calification[gt]':
+                    poems = poems.outerjoin(PoemModel.review).filter(ReviewModel.calification > int(value))
+                if key == "calification[lt]":
+                    poems = poems.outerjoin(PoemModel.review).filter(ReviewModel.calification < int(value))
+                if key == "order_by":
+                    if value == 'title' or value == 'title[asc]':
+                        poems = poems.order_by(PoemModel.title)
+                    #Por nombre descendente    
+                    if value == 'title[desc]':
+                        poems = poems.order_by(PoemModel.title.desc())
+                    if value == 'calification' or value == 'calification[asc]':
+                        poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(ReviewModel.calification)
+                    if value == 'calification[desc]':
+                        poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(ReviewModel.calification.desc())
+                    if value == 'date' or value == 'date[asc]':
+                        poems = poems.order_by(PoemModel.post_date)
+                    if value == 'date[asc]':
+                        poems = poems.order_by(PoemModel.post_date.desc())
+                    #Por cantidad de poemas ascendente 
+                    if value == 'poem_count' or value == 'poem_count[asc]':
+                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
+                    if value == 'poem_count[desc]':
+                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
         else:
             poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(PoemModel.post_date,func.count(ReviewModel.id).desc())
 
