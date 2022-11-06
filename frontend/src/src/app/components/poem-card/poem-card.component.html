@@ -2,15 +2,15 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">        
     <div *ngFor="let poem of poems">
         <div class="col">
-            <div class="card shadow-sm">
-                <div class="card-body d-block">
-                    <div class="d-flex justify-content-between align-items-center ">
+            <div class="card shadow-sm h-100">
+                <div class="card-body d-block h-100">
+                    <div class="d-flex justify-content-between align-items-center h-100">
                         <h5 class="card-title text-truncate"><a routerLink="/view-poem" style="text-decoration: none ; color:black">{{poem.title}}</a></h5>
                         <div class="btn-group flex-row-reverse">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
                         </div>
                     </div>
-                    <h6 class="card-subtitle mb-2 text-muted">by <a routerLink="/user">{{poem.user}}</a></h6>
+                    <h6 class="card-subtitle mb-2 text-muted">by <a routerLink="/user/{{poem.user}}">{{poem.alias}}</a></h6>
                     <h6><small class="text-muted">{{poem.post}}</small></h6>
                     <div class="d-flex justify-content-between align-items-center">
                         <small class="text-muted">

@@ -67,6 +67,8 @@ class Poems(Resource):
                     poems = poems.filter(PoemModel.user.has(UserModel.alias.like("%"+value+"%")))
                 if key == 'title':
                     poems = poems.filter(PoemModel.title == value)
+                if key == 'user_id':
+                    poems = poems.filter(PoemModel.user_id == value)
                 if key == 'date[gt]':
                     poems = poems.filter(PoemModel.post_date > value)
                 if key == 'date[lt]':
@@ -175,7 +177,7 @@ class Poems(Resource):
 
     #Insertar poema
     @jwt_required()
-    def post(self):
+    def post(self, parameters=None):
         poem = PoemModel.from_json(request.get_json())
         user_id =  get_jwt_identity()
         poem.user_id = user_id 

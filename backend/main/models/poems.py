@@ -1,5 +1,6 @@
 from .. import db
 from datetime import datetime
+from ..models import UserModel
 
 
 class Poem(db.Model):
@@ -16,10 +17,13 @@ class Poem(db.Model):
 
     def to_json(self):
         reviews = [review.to_json_short() for review in self.review]
+        user = db.session.query(UserModel).get_or_404(self.user_id)
+        user_name = user.alias
         json_string = {
             'id':self.id,
             'title':self.title,
             'content':self.content,
+            'alias': user_name,
             'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
             'user': self.user_id, 
             'reviews': reviews
