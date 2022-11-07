@@ -20,6 +20,7 @@ import { ItemsPerPageComponent } from './components/items-per-page/items-per-pag
 import { AddPoemBtnComponent } from './components/add-poem-btn/add-poem-btn.component';
 import { AddPoemFormComponent } from './components/add-poem-form/add-poem-form.component';
 import { OrderByComponent } from './components/order-by/order-by.component';
+import { ReviewCardComponent } from './components/review-card/review-card.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { OrderByComponent } from './components/order-by/order-by.component';
     ItemsPerPageComponent,
     AddPoemBtnComponent,
     AddPoemFormComponent,
-    OrderByComponent
+    OrderByComponent,
+    ReviewCardComponent
   ],
   imports: [
     BrowserModule,

@@ -35,12 +35,8 @@
     
         <div class="d-flex flex-column">
             <div class="container ">
-                <h1>Poem Title, by <a href="/user">User</a></h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid accusamus tempore eos enim omnis eum error ut, beatae optio quasi deleniti, vitae laudantium praesentium! Laboriosam animi excepturi dolorum mollitia vel.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quam iure quibusdam aliquid? Accusamus distinctio repellat ducimus quis architecto perferendis earum obcaecati impedit alias inventore, beatae eveniet temporibus, ipsa ut?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi error rerum, incidunt voluptatem nisi iure quibusdam pariatur, officia eius quaerat, alias laboriosam est. Et quibusdam quaerat quae laudantium dolor aspernatur.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim est placeat aspernatur, eos expedita sit praesentium laborum minus eius et. Facilis ducimus ipsam officia dolorum obcaecati porro voluptatem nesciunt ad?
-                </p>
+                <h1>{{title}}, by <a routerLink="/user/{{user_id}}">{{alias}}</a></h1>
+                <p>{{content}}</p>
             </div>
             <div class="container d-flex gap-1 justify-content-left">
                 <div class="container d-flex flex-row gap-5 align-items-center">
@@ -101,62 +97,7 @@
                     </div>
 				</div>
          
-                <div class="container col" style="margin-top:1vh;">
-                    <div class="card shadow-sm">
-                        <div class="card-body d-block">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">
-                                    <div class="rating">
-                                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                        <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                        <i class="fa-regular fa-star"></i>
-                                    </div>
-                                </small>
-                            </div>
-                            <p class="card-text multi-line">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem </p>
-                            <h6 class="card-subtitle mb-2 text-muted">by <a href="user.html">User</a></h6>
-                        </div>
-                    </div>
-                        <div class="card shadow-sm">
-                            <div class="card-body d-block">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">
-                                        <div class="rating">
-                                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                            <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                            <i class="fa-regular fa-star"></i>
-                                        </div>
-                                    </small>
-                                </div>
-                                <p class="card-text multi-line">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem </p>
-                                <h6 class="card-subtitle mb-2 text-muted">by <a href="/user">User</a></h6>
-                            </div>
-                        </div>
-
-                            <div class="card shadow-sm">
-                                <div class="card-body d-block">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <small class="text-muted">
-                                            <div class="rating">
-                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                                <i class="fa-regular fa-star"></i>
-                                                <i class="fa-regular fa-star"></i>
-                                            </div>
-                                        </small>
-                                    </div>
-                                    <p class="card-text multi-line">Lorem ipsum dolor sit amet consectetur adipisicing elit.Vero a iusto veritatis nihil dolore nisi temporibus deserunt nesciunt adipisci aliquam libero officiis, aspernatur explicabo ipsam magnam animi architecto corporis sed! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste non eligendi perspiciatis nisi soluta porro tempore consectetur id, excepturi optio sapiente illum culpa fugiat vitae consequatur! Labore iusto autem non. Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, itaque maiores necessitatibus repellendus alias doloremque impedit accusantium quis nostrum reiciendis, facere a ad perferendis adipisci accusamus illo dicta amet aliquam. lorem </p>
-                                    <h6 class="card-subtitle mb-2 text-muted">by <a href="/user">User</a></h6>
-                                </div>
-                            </div>
-        
-
-                    </div>
+                <app-review-card [reviews]="review_array"></app-review-card>
                     <nav class="mt-3" ria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                         <li class="page-item">
