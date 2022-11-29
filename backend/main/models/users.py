@@ -57,6 +57,7 @@ class User(db.Model):
             'poem_count':len(poems),
             'reviews':reviews,
             'review_count':len(reviews),
+            'admin':self.admin
         }
         return json_string
 
