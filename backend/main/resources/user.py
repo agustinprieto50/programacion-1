@@ -103,7 +103,7 @@ class Users(Resource):
 
 
     #Insertar usuario
-    #@admin_required
+    @admin_required
     def post(self):
         user = UserModel.from_json(request.get_json())
         db.session.add(user)
