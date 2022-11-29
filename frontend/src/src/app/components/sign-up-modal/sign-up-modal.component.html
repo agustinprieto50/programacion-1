@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <!-- Sign Form -->
-          <form action="">
+          <form [formGroup]="signUpForm">
             <div class="modal-header">
               <h5 class="modal-title">Sign Up</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -10,22 +10,22 @@
             <div class="modal-body">
               <div class="mb-3">
                   <label for="Username">Username<span class="text-danger">*</span></label>
-                  <input type="text" name="username" class="form-control" id="Username" placeholder="Enter Username">
+                  <input type="text" name="username" class="form-control" formControlName="username" placeholder="Enter Username">
               </div>
               <div class="mb-3">
                   <label for="E-mail">E-mail<span class="text-danger">*</span></label>
-                  <input type="text" name="username" class="form-control" id="E-mail" placeholder="Enter E-mail">
+                  <input type="text" name="username" class="form-control" formControlName="email" placeholder="Enter E-mail">
               </div>
   
   
               <div class="mb-3">
                   <label for="Password">Password<span class="text-danger">*</span></label>
-                  <input type="password" name="password" class="form-control" id="Password" placeholder="Enter Password">
+                  <input type="password" name="password" class="form-control" formControlName="password" placeholder="Enter Password">
               </div>
               
             </div>
             <div class="modal-footer pt-4">                  
-              <button type="button" class="btn btn-primary mx-auto w-100">Sign-Up</button>
+              <button type="button"  data-bs-dismiss="modal" class="btn btn-primary mx-auto w-100 "(click)="submit()">Sign-Up</button>
             </div>
         </form>
       </div>

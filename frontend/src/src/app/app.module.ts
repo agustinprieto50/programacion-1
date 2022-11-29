@@ -21,6 +21,7 @@ import { AddPoemBtnComponent } from './components/add-poem-btn/add-poem-btn.comp
 import { AddPoemFormComponent } from './components/add-poem-form/add-poem-form.component';
 import { OrderByComponent } from './components/order-by/order-by.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { ReviewCardComponent } from './components/review-card/review-card.compon
     HttpClientModule,
     AppRoutingModule,
     // ActivatedRoute
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
