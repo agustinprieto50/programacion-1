@@ -21,6 +21,7 @@ def login():
             'id': str(user.id),
             'user': user.alias,
             'email': user.email,
+            'admin': user.admin,
             'access_token': access_token
         }
 
