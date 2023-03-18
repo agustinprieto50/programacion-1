@@ -44,20 +44,14 @@ class Poems(Resource):
     #Obtener lista de poemas
     @jwt_required(optional=True)
     def get(self, parameters=None):
-        filtersList = parameters.split('&')
-        print(filtersList)
-        filtersDict = {}
-        for param in filtersList:
-            params = param.split('=')
-            filtersDict[params[0]] = params[1]
         page = 1
         per_page = 20
         user_id = get_jwt_identity()
         poems = db.session.query(PoemModel)
+        
+        args = request.args.to_dict()
 
-        print(filtersDict)
-
-        for key, value in filtersDict.items():
+        for key, value in args.items():
             if key == "page":
                 page = int(value)
             if key == "per_page":
@@ -177,7 +171,7 @@ class Poems(Resource):
 
     #Insertar poema
     @jwt_required()
-    def post(self, parameters=None):
+    def post(self):
         poem = PoemModel.from_json(request.get_json())
         user_id =  get_jwt_identity()
         poem.user_id = user_id 

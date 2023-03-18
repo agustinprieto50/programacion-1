@@ -19,6 +19,7 @@ export class AuthService {
     //let dataLogin = {email:'lover2@gmail.com',password:"12345"};
     this.url = `/api/auth/login`
     return this.httpClient.post(this.url, dataLogin).pipe(take(1));  
+
   }
   logout(){
     localStorage.removeItem("token")

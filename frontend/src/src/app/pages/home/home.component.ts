@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.params = "per_page=20"
+    this.params = "?per_page=20"
   }
   get isToken(){
     return localStorage.getItem("token") || undefined
