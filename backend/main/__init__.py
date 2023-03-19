@@ -38,6 +38,8 @@ def create_app():
     api.add_resource(resources.PoemsResource, '/poems')
     #Cargar a la API el Recurso Poema e indicar ruta
     api.add_resource(resources.PoemResource, '/poem/<id>')
+    api.add_resource(resources.PoemUtilsResource, '/poemUtils')
+
 
     #Cargar a la API el Recurso Calificaciones e indicar ruta
     api.add_resource(resources.ReviewsResource, '/reviews')
