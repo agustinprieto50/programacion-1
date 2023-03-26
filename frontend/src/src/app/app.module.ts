@@ -22,6 +22,10 @@ import { AddPoemFormComponent } from './components/add-poem-form/add-poem-form.c
 import { OrderByComponent } from './components/order-by/order-by.component';
 import { ReviewCardComponent } from './components/review-card/review-card.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { AddReviewFormComponent } from './components/add-review-form/add-review-form.component';
+import { AddReviewBtnComponent } from './components/add-review-btn/add-review-btn.component';
+
+
 
 @NgModule({
   declarations: [
@@ -42,7 +46,10 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     AddPoemBtnComponent,
     AddPoemFormComponent,
     OrderByComponent,
-    ReviewCardComponent
+    ReviewCardComponent,
+    AddReviewFormComponent,
+    AddReviewBtnComponent,
+
   ],
   imports: [
     BrowserModule,

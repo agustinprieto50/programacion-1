@@ -1,0 +1,30 @@
+<div class="modal fade" id="modalNewReview" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+          <!--Form -->
+          <form action="">
+            <div class="modal-header">
+              <h5 class="modal-title">Nueva Review</h5>
+            </div>
+            <div class="modal-body">
+                <form (submit)="onSubmit()">
+                    <div class="form-group">
+                      <label for="exampleFormControlInput1">Calificacion</label>
+                      <input type="calification" class="form-control" id="exampleFormControlInput1" placeholder="Calificacion" name="calification" [(ngModel)]="calification">
+                    </div>
+        
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Comentario</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="15" name="comment" [(ngModel)]="comment"></textarea>
+                    </div>
+                    <div class="modal-footer pt-4 justify-content-left"> 
+                      <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button> 
+                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Enviar</button>                
+                  </div>
+                  </form>
+            </div>
+            
+        </form>
+      </div>
+    </div>
+  </div>
