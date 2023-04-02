@@ -19,8 +19,8 @@ export class ViewPoemComponent implements OnInit {
   constructor(private route: ActivatedRoute,private viewPoem: ViewPoemService) { }
 
   ngOnInit(): void {
-    this.poem_id = `poem_id=${this.route.snapshot.paramMap.get('id')}`
-    this.viewPoem.viewPoem(this.route.snapshot.paramMap.get('id'))
+    this.poem_id = this.route.snapshot.paramMap.get('id')
+    this.viewPoem.viewPoem(this.poem_id)
     .subscribe((data: any) => {
       this.content = data.content
       this.title = data.title
