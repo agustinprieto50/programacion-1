@@ -15,7 +15,7 @@
             <li><a class="dropdown-item" routerLink="">Ver Pefil</a></li>
             <li><a class="dropdown-item" >Configuracion</a></li>
             <li><a class="dropdown-item" routerLink="">Ver Poemas</a></li>
-            <li *ngIf=""><a class="dropdown-item" routerLink="/user-crud">Usuarios</a></li>
+            <li *ngIf="isAdmin"><a class="dropdown-item" routerLink="/user-crud">Usuarios</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#" (click)="cerrarSesion()">Cerrar Sesion</a></li>
         </ul>

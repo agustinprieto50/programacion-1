@@ -20,6 +20,14 @@ export class HeaderComponent implements OnInit {
     return localStorage.getItem("token") || undefined
   }
   
+  get isAdmin(){
+    if ((localStorage.getItem("admin") || undefined) == 'true'){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 
   cerrarSesion(){
     this.authService.logout()
