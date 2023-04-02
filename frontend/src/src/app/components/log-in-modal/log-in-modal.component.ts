@@ -33,6 +33,7 @@ export class LogInModalComponent implements OnInit {
       next: (rta) => {
         console.log("Login exitoso",rta)
         localStorage.setItem("token",rta.access_token)
+        localStorage.setItem('user_id', rta.id)
         localStorage.setItem("admin",rta.admin)
         this.router.navigate([])
 

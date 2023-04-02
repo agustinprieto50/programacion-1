@@ -1,3 +1,15 @@
+<div id="filterHeaders" *ngIf="!isToken" class="container d-flex gap-1 justify-content-left">
+        
+    <app-filters></app-filters>
+    
+    <div class="container d-flex gap-1 justify-content-left flex-row-reverse">
+        <!-- Items per Page -->
+        <app-items-per-page></app-items-per-page>
+        <app-order-by></app-order-by>
+    </div>
+
+</div>
+
 
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">        
     <div *ngFor="let poem of poems">
