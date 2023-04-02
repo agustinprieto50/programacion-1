@@ -26,6 +26,7 @@ import { AddReviewFormComponent } from './components/add-review-form/add-review-
 import { AddReviewBtnComponent } from './components/add-review-btn/add-review-btn.component';
 
 
+import { FiltersComponent } from './components/filters/filters.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AddReviewBtnComponent } from './components/add-review-btn/add-review-bt
     AddPoemFormComponent,
     OrderByComponent,
     ReviewCardComponent,
+    FiltersComponent,
     AddReviewFormComponent,
     AddReviewBtnComponent,
 
