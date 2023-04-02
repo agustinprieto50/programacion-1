@@ -1,34 +1,8 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">        
-        <title>Programación 1</title>
+
+<app-add-review-form></app-add-review-form>
+        <app-header></app-header>
     
-        <meta name="theme-color" content="#black">
-    </head>
-    <body>
-        
-        <div class="container" id="head">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                <h2>Poemas</h2>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-lg" data-bs-toggle="dropdown" aria-expanded="false" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                          </svg>
-                      <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Ver Pefil</a></li>
-                        <li><a class="dropdown-item" href="#">Configuracion</a></li>
-                        <li><a class="dropdown-item" href="#">Ver Poemas</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-                    </ul>
-                  </div>
-            </header>
-          </div>
+    
 
 
     <main style="min-height: 80vh;">
@@ -40,47 +14,11 @@
             </div>
             <div class="container d-flex gap-1 justify-content-left">
                 <div class="container d-flex flex-row gap-5 align-items-center">
+                    
             
                         <h1>Reseñas</h1>
-                        <button type="button" class="btn btn-sm btn-primary" style="height:50%" data-bs-toggle="modal" data-bs-target="#modalNewReview">Agregar Reseña</button>
-                
-                        <div class="modal fade" id="modalNewReview" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                              <div class="modal-content">
-                                  <!--Form -->
-                                  <form action="">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title">Agregar Reseña </h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                                                                        
-                                            <label for="Reseña">Calificacion del poema</label>
-                                            <div class="rating" id="Reseña">
-                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                                <i class="fa-regular fa-star"></i>
-                                                <i class="fa-regular fa-star"></i>
-                                            </div>
-                                
-                                            <div class="form-group">
-                                              <label for="exampleFormControlTextarea1">Comentario</label>
-                                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="7"></textarea>
-                                            </div>
-                                          </form>
-                                    </div>
-                                    <div class="modal-footer pt-4 justify-content-left"> 
-                                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button> 
-                                        <button type="button" class="btn btn-primary">Enviar</button>                
-                                    </div>
-                                </form>
-                              </div>
-                            </div>
-                          </div>
-
-
-                        
+                        <app-add-review-btn></app-add-review-btn>
+                     
                 </div> 
                 <!-- items por pagina -->
                 <app-items-per-page></app-items-per-page>
@@ -120,5 +58,4 @@
    
     </main>
 
-    </body>
-</html>
+ 
