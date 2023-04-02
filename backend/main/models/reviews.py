@@ -27,7 +27,9 @@ class Review(db.Model):
         json_string = {
             'id':self.id,
             'calification':self.calification,
-            'comment':self.comment
+            'comment':self.comment,
+            'alias':self.user.alias,
+            'user_id':self.user.id
         }
         return json_string
     @staticmethod
