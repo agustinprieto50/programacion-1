@@ -60,7 +60,7 @@ class Poems(Resource):
                 if key == 'alias':
                     poems = poems.filter(PoemModel.user.has(UserModel.alias.like("%"+value+"%")))
                 if key == 'title':
-                    poems = poems.filter(PoemModel.title == value)
+                    poems = poems.filter(PoemModel.title.like("%"+value+"%"))
                 if key == 'user_id':
                     poems = poems.filter(PoemModel.user_id == value)
                 if key == 'date[gt]':
