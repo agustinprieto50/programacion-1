@@ -16,13 +16,14 @@ export class AddPoemFormComponent implements OnInit {
   ngOnInit(): void {
   }
   redirect(){
-    this.router.navigateByUrl('/home')
+    this.router.navigateByUrl('')
   }
   onSubmit(){
-    const body = {title: this.title, content: this.content}
+    const body = {title: this.title, content: this.content, rating: 0}
     this.postPoem.postRequest(body).subscribe(response => {
       console.log(response)
       this.redirect()
+      window.location.reload()
     })
   }
 }

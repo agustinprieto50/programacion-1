@@ -101,10 +101,16 @@ class Poems(Resource):
     #Insertar poema
     @jwt_required()
     def post(self):
-        poem = PoemModel.from_json(request.get_json())
+        poem_json = request.get_json()
+        print(poem_json)
+        poem = PoemModel(title=poem_json['title'], content=poem_json['content'], rating=poem_json['rating'])
         user_id =  get_jwt_identity()
         poem.user_id = user_id 
         user = db.session.query(UserModel).get_or_404(user_id)
+        if user.admin == True:
+            db.session.add(poem)
+            db.session.commit()
+            return poem.to_json(),201
         poem_count = len(user.poems)
         review_count = len(user.reviews)
         ratio = 0
@@ -125,6 +131,8 @@ class PoemUtils(Resource):
     def get(self):
         user_id =  get_jwt_identity()
         user = db.session.query(UserModel).get_or_404(user_id)
+        if user.admin == True:
+            return True
         poem_count = len(user.poems)
         review_count = len(user.reviews)
         ratio = 0

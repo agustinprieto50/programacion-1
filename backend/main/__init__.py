@@ -55,9 +55,9 @@ def create_app():
     app.config['JWT_ACCESS_TOKEN_EXPIRES'] = int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES'))
     jwt.init_app(app)
 
-    from main.auth import routes
+    from main.auth.routes import auth
     #Importar blueprint
-    app.register_blueprint(routes.auth)
+    app.register_blueprint(auth)
 
     app.config['MAIL_HOSTNAME'] = os.getenv('MAIL_HOSTNAME')
     app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER')

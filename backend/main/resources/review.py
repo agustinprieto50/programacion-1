@@ -71,6 +71,7 @@ class Reviews(Resource):
         if user_id != poem.user_id and existing_reviews == []:
             try:
                 db.session.add(review)
+                poem.rating += review.calification
                 db.session.commit()
                 result = sendmail([review.poem.user.email],"Nueva Calificacion",'review_notification',review = review)
                 return review.to_json(), 201

@@ -14,6 +14,8 @@ export class ViewPoemComponent implements OnInit {
   user_id!:any;
   alias!:any;
   review_array!:any;
+  rating:number = 0;
+  stars: number[] = [1, 2, 3, 4, 5]
 
   
   constructor(private route: ActivatedRoute,private viewPoem: ViewPoemService) { }
@@ -26,8 +28,8 @@ export class ViewPoemComponent implements OnInit {
       this.title = data.title
       this.alias = data.alias
       this.user_id = data.user
-      this.review_array = data.reviews
-      console.log(this.review_array)
+      this.review_array = data.reviews,
+      this.rating = data.rating
     })
   }
 

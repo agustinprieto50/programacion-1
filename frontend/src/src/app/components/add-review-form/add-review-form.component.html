@@ -10,7 +10,19 @@
                 <form (submit)="onSubmit()">
                     <div class="form-group">
                       <label for="exampleFormControlInput1">Calificacion</label>
-                      <input type="calification" class="form-control" id="exampleFormControlInput1" placeholder="Calificacion" name="calification" [(ngModel)]="calification">
+
+                      <div class="row">
+                        <div class="col-sm-12">
+                            <ul class="list-inline rating-list" 
+                                *ngFor="let star of stars" style="display: inline-block" >
+                                  <li (click)="rate(star)"
+                                      [ngClass]="{'selected': (star <= rating)}">
+                                    <i class="fa fa-star"></i>
+                                  </li> 
+                            </ul>
+                        </div>
+                      </div>
+
                     </div>
         
                     <div class="form-group">
