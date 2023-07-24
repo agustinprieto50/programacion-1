@@ -1,26 +1,31 @@
+<button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalSignInForm">
+  <i class="bi bi-person-add me-1"></i>
+  Agregar Usuario
+</button>
+
 <div class="modal fade" id="modalSignInForm" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
           <!-- Sign Form -->
           <form [formGroup]="signUpForm">
             <div class="modal-header">
-              <h5 class="modal-title">Sign Up</h5>
+              <h5 class="modal-title">Agregar Usuario</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div class="mb-3">
-                  <label for="Username">Username<span class="text-danger">*</span></label>
-                  <input type="text" name="username" class="form-control" formControlName="username" placeholder="Enter Username">
+                  <label for="Username">Alias<span class="text-danger">*</span></label>
+                  <input type="text" name="username" class="form-control" formControlName="username" placeholder="Ingresar Alias">
               </div>
               <div class="mb-3">
                   <label for="E-mail">E-mail<span class="text-danger">*</span></label>
-                  <input type="text" name="username" class="form-control" formControlName="email" placeholder="Enter E-mail">
+                  <input type="text" name="username" class="form-control" formControlName="email" placeholder="Ingresar E-mail">
               </div>
   
   
               <div class="mb-3">
-                  <label for="Password">Password<span class="text-danger">*</span></label>
-                  <input type="password" name="password" class="form-control" formControlName="password" placeholder="Enter Password">
+                  <label for="Password">Contraseña<span class="text-danger">*</span></label>
+                  <input type="password" name="password" class="form-control" formControlName="password" placeholder="Ingresar contraseña temporal">
               </div>
               
             </div>
