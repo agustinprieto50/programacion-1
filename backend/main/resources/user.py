@@ -63,36 +63,35 @@ class Users(Resource):
         page = 1
         per_page = 5
         users = db.session.query(UserModel)
-        if request.get_json():
-            filters=request.get_json().items()
-            for key,value in filters:
-                if key == "page":
-                    page = int(value)
-                if key == "per_page":
-                    per_page = int(value)
-            ##FILTROS##
-                #Por nombre 
-                if key == "alias":
-                    users = users.filter(UserModel.alias.like("%"+value+"%"))
-                #Cantidad de poemas mayor a:
-                if key == "poem_count":
-                    users=users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > value)
-                #Cantidad de poemas mayor a:
-                if key == "review_count":
-                    users=users.outerjoin(UserModel.reviews).group_by(UserModel.id).having(func.count(ReviewModel.id) > value)
-            ##ORDENAMIENTO##
-                if key == "order_by":
-                    #Por nombre ascendente
-                    if value == 'alias' or value == 'alias[asc]':
-                        users = users.order_by(UserModel.alias)
-                    #Por nombre descendente    
-                    if value == 'alias[desc]':
-                        users = users.order_by(UserModel.alias.desc())
-                    #Por cantidad de poemas ascendente 
-                    if value == 'poem_count' or value == 'poem_count[asc]':
-                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
-                    if value == 'poem_count[desc]':
-                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
+        args = request.args.to_dict()
+        for key,value in args.items():
+            if key == "page":
+                page = int(value)
+            if key == "per_page":
+                per_page = int(value)
+        ##FILTROS##
+            #Por nombre 
+            if key == "alias":
+                users = users.filter(UserModel.alias.like("%"+value+"%"))
+            #Cantidad de poemas mayor a:
+            if key == "poem_count":
+                users=users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > value)
+            #Cantidad de poemas mayor a:
+            if key == "review_count":
+                users=users.outerjoin(UserModel.reviews).group_by(UserModel.id).having(func.count(ReviewModel.id) > value)
+        ##ORDENAMIENTO##
+            if key == "order_by":
+                #Por nombre ascendente
+                if value == 'alias' or value == 'alias[asc]':
+                    users = users.order_by(UserModel.alias)
+                #Por nombre descendente    
+                if value == 'alias[desc]':
+                    users = users.order_by(UserModel.alias.desc())
+                #Por cantidad de poemas ascendente 
+                if value == 'poem_count' or value == 'poem_count[asc]':
+                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
+                if value == 'poem_count[desc]':
+                    users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
 
                         
         users = users.paginate(page,per_page,True,20)
