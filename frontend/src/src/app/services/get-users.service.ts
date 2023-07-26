@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class GetUsersService {
-  url:any
+  url!:any
   constructor(private http: HttpClient) { }
   getUsersAll(parameters:string){
     this.url = `/api/users${parameters}`
