@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserCrudComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getUsers: GetUserService) { }
 
   ngOnInit(): void {
   }

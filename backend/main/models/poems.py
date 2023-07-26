@@ -20,16 +20,28 @@ class Poem(db.Model):
 
         user = db.session.query(UserModel).get_or_404(self.user_id)
         user_name = user.alias
-        json_string = {
-            'id':self.id,
-            'title':self.title,
-            'content':self.content,
-            'alias': user_name,
-            'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
-            'user': self.user_id, 
-            'reviews': reviews,
-            'rating': self.rating/len(reviews)
-        }
+        if (len(reviews)>0):
+            rating = self.rating/len(reviews)
+            json_string = {
+                'id':self.id,
+                'title':self.title,
+                'content':self.content,
+                'alias': user_name,
+                'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
+                'user': self.user_id, 
+                'reviews': reviews,
+                'rating': rating
+            }
+        else:
+            json_string = {
+                'id':self.id,
+                'title':self.title,
+                'content':self.content,
+                'alias': user_name,
+                'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
+                'user': self.user_id, 
+                'reviews': reviews,
+            }
         return json_string
     
     def to_json_short(self):

@@ -27,6 +27,7 @@ import { AddReviewBtnComponent } from './components/add-review-btn/add-review-bt
 
 
 import { FiltersComponent } from './components/filters/filters.component';
+import { UsersTableComponent } from './components/users-table/users-table.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { FiltersComponent } from './components/filters/filters.component';
     FiltersComponent,
     AddReviewFormComponent,
     AddReviewBtnComponent,
+    UsersTableComponent,
 
   ],
   imports: [

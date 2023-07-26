@@ -45,12 +45,10 @@ class Poems(Resource):
     @jwt_required(optional=True)
     def get(self, parameters=None):
         page = 1
-        per_page = 20
+        per_page = 0
         user_id = get_jwt_identity()
         poems = db.session.query(PoemModel)
-        
         args = request.args.to_dict()
-
         for key, value in args.items():
             if key == "page":
                 page = int(value)

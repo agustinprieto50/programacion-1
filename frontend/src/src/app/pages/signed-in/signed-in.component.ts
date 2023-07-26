@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './signed-in.component.html',
   styleUrls: ['./signed-in.component.css']
 })
-export class SignedInComponent implements OnInit {
+export class SignedInComponent {
 
   constructor() { }
 
-  ngOnInit(): void {
+
+  onValueChange(value: any){
+    console.log(value)
   }
 
 }

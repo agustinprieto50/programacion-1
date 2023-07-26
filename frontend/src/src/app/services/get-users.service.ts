@@ -4,12 +4,11 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-
-export class GetPoemsServiceService {
+export class GetUsersService {
   url:any
-  constructor(private http: HttpClient ) { }
-  getPoemsAll(parameters:string) {
-    this.url = `/api/poems${parameters}`
+  constructor(private http: HttpClient) { }
+  getUsersAll(parameters:string){
+    this.url = `/api/users${parameters}`
     return this.http.get(this.url)
   }
 }
