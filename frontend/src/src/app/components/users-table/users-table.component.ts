@@ -16,6 +16,7 @@ export class UsersTableComponent implements OnInit {
   ngOnInit(): void {
     this.getUsers.getUsersAll('').subscribe((data:any)=> {
       this.users = data['users']
+      console.log(this.users)
   })
     
   }

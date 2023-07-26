@@ -31,22 +31,22 @@
           </tr>
         </thead>
         <tbody>
-            <div *ngFor="let user of users">
-                <tr>
-                    <th scope="col">1</th>
-                    <td>Mark</td>
-                    <td>Mark@gmail</td>
-                    <td>12</td>
-                    <td>24</td>
-                    <td><div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                        </label>
-                    </div></td>
-                    <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+          <div *ngFor="let user of users">
+          <tr>
+            <th scope="col">{{user.id}}</th>
+            <td>{{user.alias}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.poem_count}}</td>
+            <td>{{user.review_count}}</td>
+            <td><div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                </label>
+              </div></td>
+              <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
 
-                </tr>
-            </div>
+          </tr>
+        </div>
         </tbody>
       </table>
     </div>
