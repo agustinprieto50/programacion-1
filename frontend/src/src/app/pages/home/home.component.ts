@@ -9,15 +9,20 @@ import { ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
   
   
-  params!:any;
+  params: string = ""
 
   constructor(private route: ActivatedRoute ) { }
 
   ngOnInit(): void {
-    this.params = "?per_page=20"
+    this.params = "per_page=20"
   }
   get isToken(){
     return localStorage.getItem("token") || undefined
+  }
+
+
+  getItemsPerPage (value: number) {
+    this.params =  `per_page=${value}` 
   }
 
 }

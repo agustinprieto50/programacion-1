@@ -6,12 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signed-in.component.css']
 })
 export class SignedInComponent {
+  selectedItemsPerPage: number | undefined;
 
-  constructor() { }
-
-
-  onValueChange(value: any){
-    console.log(value)
+  onValueChanged(value: number){
+    this.selectedItemsPerPage = value
+    console.log(this.selectedItemsPerPage)
   }
 
 }

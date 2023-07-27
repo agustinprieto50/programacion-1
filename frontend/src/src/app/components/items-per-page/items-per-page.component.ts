@@ -7,11 +7,11 @@ import { Component, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } fro
   styleUrls: ['./items-per-page.component.css']
 })
 export class ItemsPerPageComponent{
-  @Output() valueEvent = new EventEmitter<number>()
-  value: number = 0
+  @Output() itemsPerPageEvent: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
-  onChange(){
-    this.valueEvent.emit(this.value)
+  selectItemsPerPage(target: EventTarget | null){
+    if (target instanceof HTMLSelectElement) {
+      this.itemsPerPageEvent.emit(Number(target.value))
+    }
   }
 }

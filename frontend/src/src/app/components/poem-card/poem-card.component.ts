@@ -1,6 +1,4 @@
-import { AnimateTimings } from '@angular/animations';
-import { Token } from '@angular/compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { GetPoemsServiceService } from 'src/app/services/get-poems-service.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 // import { ActivatedRoute } from '@angular/router';
@@ -11,7 +9,7 @@ import { GetUserService } from 'src/app/services/get-user.service';
   templateUrl: './poem-card.component.html',
   styleUrls: ['./poem-card.component.css']
 })
-export class PoemCardComponent implements OnInit {
+export class PoemCardComponent implements OnInit, OnChanges {
   @Input() parameters!:string;
   itemsPerPage:any;
   poems: any;
@@ -21,7 +19,7 @@ export class PoemCardComponent implements OnInit {
 
   constructor(private getPoems: GetPoemsServiceService, private getUser: GetUserService) { }
 
-  ngOnInit(): void {
+  getPoemsScript () {
     this.token = localStorage.getItem('token') || undefined
     this.user_id = localStorage.getItem('user_id') || undefined
     if (this.token) {
@@ -29,7 +27,7 @@ export class PoemCardComponent implements OnInit {
         this.user_review_count = data['review_count']
       })
       if (this.user_review_count < 5){
-        this.getPoems.getPoemsAll('order_by=calification[asc]')
+        this.getPoems.getPoemsAll('?order_by=calification[asc]&'+this.parameters)
         .subscribe((data: any) => {
         this.poems = data['poems']
     })
@@ -47,8 +45,18 @@ export class PoemCardComponent implements OnInit {
         this.poems = data['poems']
     })
     }
+  }
+
+  ngOnInit(): void {
+    this.getPoemsScript()
     
   }
+  ngOnChanges(changes: SimpleChanges) {
+      if(changes['parameters'] && !changes['parameters'].firstChange) {
+        this.getPoemsScript()
+      }
+  }
+
   get isToken(){
     return localStorage.getItem("token") || undefined
   }

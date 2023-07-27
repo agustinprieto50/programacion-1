@@ -24,10 +24,10 @@
             <th scope="col">#</th>
             <th scope="col">Usuario(Alias)</th>
             <th scope="col">email</th>
-            <th scope="col">Cantidad de Poemas</th>
-            <th scope="col">Cantidad de reviews</th>
-            <th scope="col">ADMIN</th>
-            <th scope="col">Eliminar Usuario</th>
+            <th class="text-center" scope="col">Cantidad de Poemas</th>
+            <th class="text-center" scope="col">Cantidad de reviews</th>
+            <th class="text-center" scope="col">ADMIN</th>
+            <th class="text-center" scope="col">Eliminar Usuario</th>
           </tr>
         </thead>
         
@@ -37,14 +37,16 @@
               <th scope="col">{{user.id}}</th>
               <td>{{user.alias}}</td>
               <td>{{user.email}}</td>
-              <td>{{user.poem_count}}</td>
-              <td>{{user.review_count}}</td>
-              <td><div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <td class="text-center">{{user.poem_count}}</td>
+              <td class="text-center">{{user.review_count}}</td>
+              <td class="text-center">
+                <div class="form-check text-center">
+                  <input class="form-check-input text-center" type="checkbox" value="" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
                   </label>
-                </div></td>
-                <td> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></td>
+                </div>
+              </td>
+                <td class="text-center"> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="bi bi-trash3-fill"></i></button></td>
 
             </tr>
           

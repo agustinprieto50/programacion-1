@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient,HttpHeaders } from '@angular/common/http'
 import { Observable} from 'rxjs'
 
 
@@ -13,10 +13,12 @@ export class SignupService {
   ) { }
 
   signUp(dataSignUp:any): Observable<any> {
-    const headers = { 'content-type': 'application/json'}  
+    const token = localStorage.getItem('token') 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const options = { headers: headers}
     this.url = `/api/users`
     console.log(dataSignUp)
-    return this.httpClient.post(this.url, dataSignUp,{'headers':headers}); 
+    return this.httpClient.post(this.url, dataSignUp, options); 
    }
 }
 
