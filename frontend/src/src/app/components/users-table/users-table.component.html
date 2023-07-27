@@ -46,7 +46,32 @@
                   </label>
                 </div>
               </td>
-                <td class="text-center"> <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="bi bi-trash3-fill"></i></button></td>
+              <td class="text-center"> 
+                <!-- Modal confirmacion delete user-->
+                  <div class="modal fade" tabindex="-1" role="dialog" id="confirmationModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Confirmar Eliminación</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          ¿Está seguro que desea eliminar este usuario :{{user.alias}} ?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="button" class="btn btn-danger" (click)="deleteUserConfirmed(user.id)">Eliminar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-danger btn-sm rounded-0" type="button" (click)="openConfirmationModal()" data-placement="top" title="Delete">
+                    <i class="bi bi-trash3-fill"></i>
+                  </button>
+        
+
+              </td>
 
             </tr>
           
