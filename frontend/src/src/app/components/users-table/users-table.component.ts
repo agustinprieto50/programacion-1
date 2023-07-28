@@ -23,15 +23,15 @@ export class UsersTableComponent implements OnInit {
     
   }
 
-  openConfirmationModal(): void {
-    const confirmationModal = document.getElementById('confirmationModal');
+  openConfirmationModal(userId:any): void {
+    const confirmationModal = document.getElementById('confirmationModal-' + userId);
     confirmationModal?.classList.add('show');
     confirmationModal?.setAttribute('aria-modal', 'true');
     confirmationModal?.setAttribute('style', 'display: block');
   }
 
-  closeConfirmationModal(): void {
-    const confirmationModal = document.getElementById('confirmationModal');
+  closeConfirmationModal(userId:any): void {
+    const confirmationModal = document.getElementById('confirmationModal-' + userId);
     confirmationModal?.classList.remove('show');
     confirmationModal?.setAttribute('aria-modal', 'false');
     confirmationModal?.setAttribute('style', 'display: none');
@@ -42,7 +42,9 @@ export class UsersTableComponent implements OnInit {
     this.deleteUserService.deleteUser(userId).subscribe(
       
       () => {
+        console.log(`Tried deleting user ${userId}`);
         console.log(`User with ID ${userId} deleted successfully.`);
+        alert(`Se elimino el usuario con id ${userId}`)
       },
       (error) => {
         console.log(`Tried deleting user ${userId}`);
@@ -53,7 +55,7 @@ export class UsersTableComponent implements OnInit {
 
   deleteUserConfirmed(userId:any): void {
     this.deleteUser(userId);
-    this.closeConfirmationModal();
+    this.closeConfirmationModal(userId);
   }
 
 }

@@ -16,6 +16,6 @@ export class DeleteUserService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     const options = { headers: headers}
     this.url = `/api/user/${user_id}`
-    return this.httpClient.post(this.url,options); 
+    return this.httpClient.delete(this.url,options); 
   }
 }
