@@ -40,11 +40,12 @@
               <td class="text-center">{{user.poem_count}}</td>
               <td class="text-center">{{user.review_count}}</td>
               <td class="text-center">
-                <div class="form-check text-center">
-                  <input class="form-check-input text-center" type="checkbox" value="" id="flexCheckDefault">
-                  <label class="form-check-label" for="flexCheckDefault">
-                  </label>
-                </div>
+                <ng-container *ngIf="user.admin; else notAdmin">
+                  <i class="bi bi-check-square"></i>
+                </ng-container>
+                <ng-template #notAdmin>
+                  <i class="bi bi-square"></i>
+                </ng-template>
               </td>
               <td class="text-center"> 
                 <!-- Modal confirmacion delete user-->

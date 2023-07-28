@@ -45,6 +45,7 @@ export class UsersTableComponent implements OnInit {
         console.log(`Tried deleting user ${userId}`);
         console.log(`User with ID ${userId} deleted successfully.`);
         alert(`Se elimino el usuario con id ${userId}`)
+        window.location.reload()
       },
       (error) => {
         console.log(`Tried deleting user ${userId}`);

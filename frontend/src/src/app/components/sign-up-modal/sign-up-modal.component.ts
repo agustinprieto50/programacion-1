@@ -26,6 +26,7 @@ export class SignUpModalComponent implements OnInit {
       next: (rta) => {
         console.log("SignUp exitoso",rta)
         alert("SignUp exitoso")
+        window.location.reload()
 
       }, error: (error) => {
         alert("Datos incorrectos")
