@@ -1,6 +1,6 @@
 import { AnimateTimings } from '@angular/animations';
 import { Token } from '@angular/compiler';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { GetUsersService } from 'src/app/services/get-users.service';
 import { DeleteUserService } from 'src/app/services/delete-user.service'; 
 
@@ -19,8 +19,14 @@ export class UsersTableComponent implements OnInit {
     this.getUsers.getUsersAll('?'+this.parameters).subscribe((data:any)=> {
       this.users = data['users']
       console.log(this.users)
-  })
-    
+  }) 
+  }
+
+  ngOnChanges() {
+    this.getUsers.getUsersAll('?'+this.parameters).subscribe((data:any)=> {
+      this.users = data['users']
+      console.log(this.users)
+  }) 
   }
 
   openConfirmationModal(userId:any): void {

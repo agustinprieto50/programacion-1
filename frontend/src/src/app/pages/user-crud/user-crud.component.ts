@@ -12,15 +12,43 @@ export class UserCrudComponent implements OnInit {
   alias: string = '';
   poemas: string = '';
   reviews: string = '';
-  params:any
-
+  orden: string = 'none';
+  params: any
   constructor() { }
 
   ngOnInit(): void {
+    this.params=''
   }
-  updateTableParameters() {
-    // Formulate the parameters based on the input values
-    this.params = `alias=${this.alias}&poem_count=${this.poemas}&review_count=${this.reviews}`;
+  
+  updateParams():void {
+
+    this.params=''
+    if (this.alias !== '') {
+      this.params += '&alias=' + this.alias;
+
+    }
+
+    if (this.poemas !== '') {
+      this.params += '&poem_count=' + this.poemas;
+    }
+
+    if (this.reviews !== '') {
+      this.params += '&review_count=' + this.reviews;
+    }
+
+    if (this.orden !== 'none') {
+      this.params += '&order_by=' + this.orden;
+    }
+
+  }
+
+  clearForms() {
+    this.alias = '';
+    this.poemas = '';
+    this.reviews = '';
+    this.orden = 'none';
+    this.updateParams(); // Optionally, call this if you want to update params after clearing the forms.
+  }
 
 }
-}
+
