@@ -2,13 +2,14 @@
     <!-- Header Component -->
     <app-header></app-header>
 
-
-
     <main style="min-height: 80vh;">
+    
     
 
     <div *ngIf="isToken" class="container d-flex gap-1 justify-content-left">
-        <!-- Boton Add Peom -->
+        
+        
+        <!-- Boton Add Poem -->
         <app-add-poem-btn></app-add-poem-btn>
         <div class="container d-flex gap-1 justify-content-left flex-row-reverse">
             <!-- Items per Page -->
@@ -17,13 +18,65 @@
         <app-add-poem-form></app-add-poem-form>
     </div>
 
+
+    <!---------------- Filtros-------------->
+    <div *ngIf="!isToken" class="container d-flex gap-1 justify-content-left">
+        
+        <div id="filters" name="filters" class="container d-flex gap-1 justify-content-left">
+            <button (click)="clearForms()" class="btn btn-primary">Limpiar Filtros</button>
+            <div class="form-outline">
+                <label for="Autor">Alias</label>
+                <input type="text" [(ngModel)]="alias" (ngModelChange)="updateParams()" name="filtro_alias" id="alias" class="form-control">
+            </div>
+        
+            <div class="form-outline">
+                <label for="Titulo">Titulo</label>
+                <input type="text" [(ngModel)]="titulo" (ngModelChange)="updateParams()" name="filtro_titulo" id="titulo" class="form-control">
+            </div>
+        
+            <div class="form-outline">
+                <label for="fecha">Publicado antes de:</label>
+                <input type="date" [(ngModel)]="fechaMayor" (ngModelChange)="updateParams()" class="form-control">
+             </div>
+        
+            <div class="form-outline">
+                <label for="fecha">Publicado despues de:</label>
+                <input type="date" [(ngModel)]="fechaMenor" (ngModelChange)="updateParams()" class="form-control">
+            </div>
+            <div class="form-outline">
+                <label for="calMayor">Calificacion mayor a:</label>
+                <input type="number"[(ngModel)]="calMayor" (ngModelChange)="updateParams()"id="calMayor" class="form-control" />
+                
+            </div>
+            <div class="form-outline">
+                <label for="calMenor">Calificacion menor a:</label>
+                <input type="number" [(ngModel)]="calMenor" (ngModelChange)="updateParams()" id="calMenor" class="form-control" />
+               
+              </div>
+        
+              <div class="form-outline">
+                <label for="desplegable">Ordenar por</label>
+                <select [(ngModel)]="orden" (change)="updateParams()" name="desplegable" id="desplegable" class="form-control">
+                  <option value="none">--Elegir una opción--</option>
+                  <option value="title">Titulo (ascendente)</option>
+                  <option value="title[desc]">Titulo (descendente)</option>
+                  <option value="calification">Calificacion (ascendente)</option>
+                  <option value="calification[desc]">Calificacion (descendente)</option>
+                  <option value="date">Fecha (ascendente)</option>
+                  <option value="date[asc]">Fecha (descendente)</option>
+                </select>
+             </div> 
+        </div>
+            
+    </div>
+
     <div id="poemsDiv" class="album py-5 bg-light">
         <div class="container">
         
-            <app-poem-card [parameters]="params"></app-poem-card>
+            <app-poem-card [parameters]="params" (updatePagesEvent)="paginationPages($event)"></app-poem-card>
         
         </div>
         <!-- Pagination -->
-        <app-pagination></app-pagination>
+        <app-pagination [pages]="pages" (changePageEvent)="getPage($event)" ></app-pagination>
     </div>
 </main>

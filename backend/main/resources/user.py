@@ -75,10 +75,10 @@ class Users(Resource):
                 users = users.filter(UserModel.alias.like("%"+value+"%"))
             #Cantidad de poemas mayor a:
             if key == "poem_count":
-                users=users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > value)
+                users=users.outerjoin(UserModel.poems).group_by(UserModel.id).having(func.count(PoemModel.id) > int(value))
             #Cantidad de poemas mayor a:
             if key == "review_count":
-                users=users.outerjoin(UserModel.reviews).group_by(UserModel.id).having(func.count(ReviewModel.id) > value)
+                users=users.outerjoin(UserModel.reviews).group_by(UserModel.id).having(func.count(ReviewModel.id) > int(value))
         ##ORDENAMIENTO##
             if key == "order_by":
                 #Por nombre ascendente

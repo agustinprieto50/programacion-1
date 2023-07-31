@@ -1,21 +1,45 @@
 <div id="filters" name="filters" class="container d-flex gap-1 justify-content-left">
-    <div class="form-group">
-        <label for="Autor">Autor</label>
-        <form [formGroup]="form">
-            <input type="text" name="campoautor" id="autor" class="form-control" formControlName="value">
-        </form>
-        
-        <ul *ngIf="poems">
-            <li *ngFor="let poem of poems">{{ poem.title }}</li>
-          </ul>
-        
+    <button (click)="clearForms()" class="btn btn-primary">Limpiar Filtros</button>
+    <div class="form-outline">
+        <label for="Autor">Alias</label>
+        <input type="text" [(ngModel)]="alias" (ngModelChange)="updateParams()" name="filtro_alias" id="alias" class="form-control">
     </div>
-    <div class="form-group">
-    <label for="Titulo">Titulo</label>
-        <input type="text" name="campotitulo" id="titulo" class="form-control">
+
+    <div class="form-outline">
+        <label for="Titulo">Titulo</label>
+        <input type="text" [(ngModel)]="titulo" (ngModelChange)="updateParams()" name="filtro_titulo" id="titulo" class="form-control">
     </div>
-    <div class="form-group">
-        <label for="fecha">Filtrar por fecha</label>
-        <input type="date" name="campofecha" id="fecha" class="form-control">
+
+    <div class="form-outline">
+        <label for="fecha">Publicado antes de:</label>
+        <input type="date" [(ngModel)]="fechaMayor" (ngModelChange)="updateParams()" class="form-control">
      </div>
+
+    <div class="form-outline">
+        <label for="fecha">Publicado despues de:</label>
+        <input type="date" [(ngModel)]="fechaMenor" (ngModelChange)="updateParams()" class="form-control">
+    </div>
+    <div class="form-outline">
+        <label for="calMayor">Calificacion mayor a:</label>
+        <input type="number"[(ngModel)]="calMayor" (ngModelChange)="updateParams()"id="calMayor" class="form-control" />
+        
+    </div>
+    <div class="form-outline">
+        <label for="calMenor">Calificacion menor a:</label>
+        <input type="number" [(ngModel)]="calMenor" (ngModelChange)="updateParams()" id="calMenor" class="form-control" />
+       
+      </div>
+
+      <div class="form-outline">
+        <label for="desplegable">Ordenar por</label>
+        <select [(ngModel)]="orden" (change)="updateParams()" name="desplegable" id="desplegable" class="form-control">
+          <option value="none">--Elegir una opción--</option>
+          <option value="title">Titulo (ascendente)</option>
+          <option value="title[desc]">Titulo (descendente)</option>
+          <option value="calification">Calificacion (ascendente)</option>
+          <option value="calification[desc]">Calificacion (descendente)</option>
+          <option value="date">Fecha (ascendente)</option>
+          <option value="date[asc]">Fecha (descendente)</option>
+        </select>
+     </div> 
 </div>

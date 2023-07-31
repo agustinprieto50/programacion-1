@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter} from '@angular/core';
 import { GetPoemsServiceService } from 'src/app/services/get-poems-service.service';
 import { GetUserService } from 'src/app/services/get-user.service';
 // import { ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { GetUserService } from 'src/app/services/get-user.service';
 })
 export class PoemCardComponent implements OnInit, OnChanges {
   @Input() parameters!:string;
+  @Output() updatePagesEvent = new EventEmitter<number>();
   itemsPerPage:any;
   poems: any;
   token: any
@@ -30,12 +31,16 @@ export class PoemCardComponent implements OnInit, OnChanges {
         this.getPoems.getPoemsAll('?order_by=calification[asc]&'+this.parameters)
         .subscribe((data: any) => {
         this.poems = data['poems']
+        this.updatePagesEvent.emit(Number(data['pages']))
+        
     })
       }
       else{
         this.getPoems.getPoemsAll(this.parameters)
         .subscribe((data: any) => {
         this.poems = data['poems']
+        this.updatePagesEvent.emit(Number(data['pages']))
+
     })
       }
     }
@@ -43,6 +48,8 @@ export class PoemCardComponent implements OnInit, OnChanges {
       this.getPoems.getPoemsAll(this.parameters)
         .subscribe((data: any) => {
         this.poems = data['poems']
+        this.updatePagesEvent.emit(Number(data['pages']))
+
     })
     }
   }
@@ -55,10 +62,6 @@ export class PoemCardComponent implements OnInit, OnChanges {
       if(changes['parameters'] && !changes['parameters'].firstChange) {
         this.getPoemsScript()
       }
-  }
-
-  get isToken(){
-    return localStorage.getItem("token") || undefined
   }
 
   

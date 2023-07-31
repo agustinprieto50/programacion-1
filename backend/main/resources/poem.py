@@ -83,11 +83,7 @@ class Poems(Resource):
                         poems = poems.order_by(PoemModel.post_date)
                     if value == 'date[asc]':
                         poems = poems.order_by(PoemModel.post_date.desc())
-                    #Por cantidad de poemas ascendente 
-                    if value == 'poem_count' or value == 'poem_count[asc]':
-                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id))
-                    if value == 'poem_count[desc]':
-                        users = users.outerjoin(UserModel.poems).group_by(UserModel.id).order_by(func.count(PoemModel.id).desc())
+                    
         else:
             poems = poems.outerjoin(PoemModel.review).group_by(PoemModel.id).order_by(PoemModel.post_date,func.count(ReviewModel.id).desc())
 
