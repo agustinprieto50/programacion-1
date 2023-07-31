@@ -17,7 +17,7 @@
                     
             
                         <h1>Reseñas</h1>
-                        <app-add-review-btn></app-add-review-btn>
+                        <app-add-review-btn *ngIf="isToken"></app-add-review-btn>
                      
                 </div> 
                 <!-- items por pagina -->
@@ -31,7 +31,7 @@
                             <ul class="list-inline rating-list" 
                                 *ngFor="let star of stars" style="display: inline-block" >
                                   <li 
-                                      [ngClass]="{'selected': (star <= rating)}">
+                                      [ngClass]="{'selected': (star <= rating)} " style="display: inline-block; pointer-events: none;">
                                     <i class="fa fa-star"></i>
                                   </li> 
                             </ul>
@@ -39,7 +39,7 @@
                       </div>
 				</div>
          
-                <app-review-card [reviews]="review_array"></app-review-card>
+                <app-review-card *ngIf="isToken"  [reviews]="review_array"></app-review-card>
                     <nav class="mt-3" ria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                         <li class="page-item">

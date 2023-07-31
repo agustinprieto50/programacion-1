@@ -52,6 +52,7 @@ export class PoemCardComponent implements OnInit, OnChanges {
 
     })
     }
+    console.log(this.poems)
   }
 
   ngOnInit(): void {
@@ -61,8 +62,12 @@ export class PoemCardComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
       if(changes['parameters'] && !changes['parameters'].firstChange) {
         this.getPoemsScript()
+
       }
   }
 
+  generateStarsArray(rating: number): number[] {
+    return Array.from({ length: rating }, (_, index) => index + 1);
+  }
   
 }

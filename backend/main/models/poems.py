@@ -27,7 +27,7 @@ class Poem(db.Model):
                 'title':self.title,
                 'content':self.content,
                 'alias': user_name,
-                'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
+                'post_date':self.post_date.strftime("%Y-%m-%d"),
                 'user': self.user_id, 
                 'reviews': reviews,
                 'rating': rating
@@ -38,7 +38,7 @@ class Poem(db.Model):
                 'title':self.title,
                 'content':self.content,
                 'alias': user_name,
-                'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S"),
+                'post_date':self.post_date.strftime("%Y-%m-%d"),
                 'user': self.user_id, 
                 'reviews': reviews,
             }
@@ -49,7 +49,7 @@ class Poem(db.Model):
             'id':self.id,
             'title':self.title,
             'content':self.content,
-            'post_date':self.post_date.strftime("%Y-%m-%d/%H:%M:%S")
+            'post_date':self.post_date.strftime("%Y-%m-%d")
         }
         return json_string
 

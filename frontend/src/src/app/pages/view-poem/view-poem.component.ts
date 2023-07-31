@@ -32,7 +32,9 @@ export class ViewPoemComponent implements OnInit {
       this.rating = data.rating
     })
   }
-
+  get isToken(){
+    return localStorage.getItem("token") || undefined
+  }
 
 }
 

@@ -13,18 +13,20 @@
                         </div>
                     </div>
                     <h6 class="card-subtitle mb-2 text-muted">by <a routerLink="/user/{{poem.user}}">{{poem.alias}}</a></h6>
-                    <h6><small class="text-muted">{{poem.post}}</small></h6>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">
-                            <div class="rating">
-                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                <i class="fa-solid fa-star" style="color: rgb(214, 136, 18)"></i>
-                                <i class="fa-regular fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
-                            </div>
-                        </small>
-                    </div>
+                    <h6><small class="text-muted">{{poem.post_date}}</small></h6>
+                    <!--RATING -->
+                    <ul class="list-inline rating-list">
+                        <ng-container *ngIf="poem.rating; else noRating">
+                            <li *ngFor="let star of generateStarsArray(poem.rating)" style="display: inline-block; pointer-events: none;">
+                              <i style="color: rgba(245, 245, 8, 0.747)" class="fa fa-star" [ngClass]="{'selected': (star <= poem.rating)}"></i>
+                            </li>
+                            <li style="display: inline-block; pointer-events: none; vertical-align: middle;">{{ poem.rating }}</li>
+                          </ng-container>
+                          <ng-template #noRating>
+                            <h6><small class="text-muted">No tiene reviews aun</small></h6>
+                          </ng-template>
+                      </ul>
+                      
                     <p class="card-text multi-line">{{poem.content}}</p>
                 </div>
             </div>
