@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
+import { DeletePoemFormComponent } from 'src/app/components/delete-poem-form/delete-poem-form.component';
 import { ViewPoemService } from 'src/app/services/view-poem.service';
+
 @Component({
   selector: 'app-view-poem',
   templateUrl: './view-poem.component.html',
@@ -57,6 +59,5 @@ export class ViewPoemComponent implements OnInit {
     }
   }
 
-  
 }
 

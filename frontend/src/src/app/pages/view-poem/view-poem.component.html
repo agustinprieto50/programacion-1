@@ -11,10 +11,10 @@
                     <h1>{{ title }}, by <a routerLink="/user/{{ user_id }}">{{ alias }}</a></h1>
                   </div>
                   <div class="col-auto">
-                    <button *ngIf="showDelete" class="btn btn-danger btn-sm rounded-0" type="button" (click)="openConfirmationModal()" data-bs-toggle="modal" data-bs-target="#confirmationModal" data-placement="top" title="Borrar Poem">
+                    <button *ngIf="showDelete" class="btn btn-danger btn-sm rounded-0" type="button" (click)="deletePoemForm.openConfirmationModal()" data-bs-toggle="modal" data-bs-target="#confirmationModal" data-placement="top" title="Borrar Poem">
                       <i class="bi bi-trash3-fill"></i>
                     </button>
-               
+                    <app-delete-poem-form [poemId]="poem_id" [title]="title" #deletePoemForm></app-delete-poem-form>
                   </div>
                 </div>
                 <p>{{ content }}</p>

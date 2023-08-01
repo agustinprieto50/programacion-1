@@ -29,6 +29,8 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { ReviewsEmptyStateComponent } from './components/reviews-empty-state/reviews-empty-state.component';
 import { DeletePoemFormComponent } from './components/delete-poem-form/delete-poem-form.component';
+import { DeleteUserFormComponent } from './components/delete-user-form/delete-user-form.component';
+import { DeleteReviewFormComponent } from './components/delete-review-form/delete-review-form.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { DeletePoemFormComponent } from './components/delete-poem-form/delete-po
     UsersTableComponent,
     ReviewsEmptyStateComponent,
     DeletePoemFormComponent,
+    DeleteUserFormComponent,
+    DeleteReviewFormComponent,
 
   ],
   imports: [
