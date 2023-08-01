@@ -11,5 +11,8 @@ export class ReviewsEmptyStateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  get isToken(){
+    return localStorage.getItem("token") || undefined
+  }
 
 }

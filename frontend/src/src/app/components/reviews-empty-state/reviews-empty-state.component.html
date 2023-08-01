@@ -1,9 +1,13 @@
 <div class="card text-center" style="margin-right: 80px; margin-left: 100px; margin-top: 25px;">
     
     <div class="card-body">
-      <h5 class="card-title">Aún no hay reseñas</h5>
-      <img src="../../assets/images/folder.png" style="height: 80px; width: min-content;">
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+        
+      <h5 class="card-title" style="margin-top: 10px;">Aún no hay reseñas</h5>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <img src="../../assets/images/folder.png" style="height: 80px; width: min-content;">
+        <app-add-review-btn style="margin-top: 12px; margin-bottom: 12px;" *ngIf="isToken"></app-add-review-btn>
+      </div>
+      
     </div>
     
 </div>

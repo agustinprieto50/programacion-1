@@ -69,5 +69,6 @@ export class PoemCardComponent implements OnInit, OnChanges {
   generateStarsArray(rating: number): number[] {
     return Array.from({ length: rating }, (_, index) => index + 1);
   }
+
   
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; 
 
+
 @Component({
   selector: 'app-user-crud',
   templateUrl: './user-crud.component.html',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { ViewPoemService } from 'src/app/services/view-poem.service';
 @Component({
   selector: 'app-view-poem',
@@ -13,10 +13,11 @@ export class ViewPoemComponent implements OnInit {
   title!:any;
   user_id!:any;
   alias!:any;
-  review_array!:any;
+  review_array: any[] = [];
   rating:number = 0;
   stars: number[] = [1, 2, 3, 4, 5]
-
+  loggedInUserId: number = 0;
+  hideButton: boolean = false;
   
   constructor(private route: ActivatedRoute,private viewPoem: ViewPoemService) { }
 
@@ -31,15 +32,31 @@ export class ViewPoemComponent implements OnInit {
       this.review_array = data.reviews,
       this.rating = data.rating
     })
+    this.loggedInUserId = Number(localStorage.getItem("user_id"))
+    if (this.loggedInUserId === this.user_id) {
+      this.hideButton = true
+    }
+    this.review_array.forEach(review => {
+      if (this.loggedInUserId === review.user_id) {
+        this.hideButton = true
+      }
+    });
+
+    
   }
   get isToken(){
     return localStorage.getItem("token") || undefined
   }
 
   get showDelete(){
-    if (this.user_id == localStorage.getItem("user_id") or local)
-    
+    if((this.user_id==localStorage.getItem("user_id")) || (localStorage.getItem("admin") == 'true')){
+        return true
+    }
+    else{
+      return false
+    }
   }
 
+  
 }
 

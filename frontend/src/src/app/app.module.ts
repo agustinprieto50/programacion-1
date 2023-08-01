@@ -28,6 +28,7 @@ import { AddReviewBtnComponent } from './components/add-review-btn/add-review-bt
 import { FiltersComponent } from './components/filters/filters.component';
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { ReviewsEmptyStateComponent } from './components/reviews-empty-state/reviews-empty-state.component';
+import { DeletePoemFormComponent } from './components/delete-poem-form/delete-poem-form.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ReviewsEmptyStateComponent } from './components/reviews-empty-state/rev
     AddReviewBtnComponent,
     UsersTableComponent,
     ReviewsEmptyStateComponent,
+    DeletePoemFormComponent,
 
   ],
   imports: [
