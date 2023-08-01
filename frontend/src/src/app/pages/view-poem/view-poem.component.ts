@@ -36,5 +36,10 @@ export class ViewPoemComponent implements OnInit {
     return localStorage.getItem("token") || undefined
   }
 
+  get showDelete(){
+    if (this.user_id == localStorage.getItem("user_id") or local)
+    
+  }
+
 }
 

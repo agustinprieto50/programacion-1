@@ -24,7 +24,7 @@
                 <!-- <app-items-per-page></app-items-per-page> -->
             </div>
             
-                <div class="container rating-block">
+                <div class="container rating-block" *ngIf="review_array.length > 0">
 					<h2 class="bold padding-bottom-7">{{rating}}<small>/ 5</small></h2>
                     <div class="row">
                         <div class="col-sm-12">
@@ -38,6 +38,10 @@
                         </div>
                       </div>
 				</div>
+
+                <div *ngIf="review_array.length === 0">
+                    <app-reviews-empty-state></app-reviews-empty-state>
+                </div>
          
                 <app-review-card *ngIf="isToken"  [reviews]="review_array"></app-review-card>
                     
