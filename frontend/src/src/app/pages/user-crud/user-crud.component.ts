@@ -10,11 +10,14 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./user-crud.component.css']
 })
 export class UserCrudComponent implements OnInit {
+  pages: number = 1;
+  page: number = 1;
   alias: string = '';
   poemas: string = '';
   reviews: string = '';
   orden: string = 'none';
-  params: any
+  params: any;
+  baseParams: any;
   constructor() { }
 
   ngOnInit(): void {
@@ -40,6 +43,7 @@ export class UserCrudComponent implements OnInit {
     if (this.orden !== 'none') {
       this.params += '&order_by=' + this.orden;
     }
+    this.baseParams = this.params
 
   }
 
@@ -49,6 +53,15 @@ export class UserCrudComponent implements OnInit {
     this.reviews = '';
     this.orden = 'none';
     this.updateParams(); // Optionally, call this if you want to update params after clearing the forms.
+  }
+
+  updatePages (value: number) {
+    this.pages = value
+  }
+
+  updatePage(value: number) {
+    this.params = this.baseParams
+    this.params += '&page=' + value
   }
 
 }

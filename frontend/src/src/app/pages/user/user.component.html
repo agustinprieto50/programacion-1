@@ -1,47 +1,12 @@
-
-        
-        <div class="container" id="head">
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                <h2>{{user}}</h2>
-              <div class="col-md text-end ">
-                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalLoginForm">Login</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSignInForm">Sign-up</button>
-              </div>
-            </header>
-          </div>
-    
- <!-- Modal Log In -->
- <div class="modal fade" id="modalLoginForm" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <!-- Login Form -->
-          <form action="">
-            <div class="modal-header">
-              <h5 class="modal-title">Log In </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <div class="mb-3">
-                  <label for="Username">Username<span class="text-danger">*</span></label>
-                  <input type="text" name="username" class="form-control" id="Username" placeholder="Enter Username">
-              </div>
-  
-              <div class="mb-3">
-                  <label for="Password">Password<span class="text-danger">*</span></label>
-                  <input type="password" name="password" class="form-control" id="Password" placeholder="Enter Password">
-              </div>
-              <div class="mb-3">
-                  <a href="#" class="float-left">Forgot Password</a>
-              </div>
-            </div>
-            <div class="modal-footer pt-4">                  
-              <button type="button" class="btn btn-primary mx-auto w-100">Login</button>
-            </div>
-        </form>
+<div class="container" id="head">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <h2>Poemas de @{{user}}</h2>
+      <div class="col-md text-end ">
+        <app-log-in-modal></app-log-in-modal>
       </div>
-    </div>
+    </header>
   </div>
-
+    
   <!-- Modal Sign Up -->
  <div class="modal fade" id="modalSignInForm" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

@@ -13,7 +13,7 @@ export class LogInModalComponent implements OnInit {
   loginForm!: FormGroup;
 
   constructor(
-    private authService:AuthService,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
 
@@ -35,7 +35,7 @@ export class LogInModalComponent implements OnInit {
         localStorage.setItem("token",rta.access_token)
         localStorage.setItem('user_id', rta.id)
         localStorage.setItem("admin",rta.admin)
-        this.router.navigate([])
+        this.router.navigate([''])
 
       }, error: (error) => {
         alert("Credenciales incorrectas")

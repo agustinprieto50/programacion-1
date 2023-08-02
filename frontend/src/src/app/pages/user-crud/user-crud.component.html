@@ -44,8 +44,8 @@
             
         </div>
     
-        <app-users-table [parameters]="params"></app-users-table>
-        <app-pagination></app-pagination>
+        <app-users-table [parameters]="params" (pagesEvent)="updatePages($event)"></app-users-table>
+        <app-pagination [pages]="pages" (changePageEvent)="updatePage($event)"></app-pagination>
 
 </main>
 

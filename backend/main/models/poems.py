@@ -21,7 +21,7 @@ class Poem(db.Model):
         user = db.session.query(UserModel).get_or_404(self.user_id)
         user_name = user.alias
         if (len(reviews)>0):
-            rating = self.rating/len(reviews)
+            rating = round(self.rating/len(reviews), 2)
             json_string = {
                 'id':self.id,
                 'title':self.title,

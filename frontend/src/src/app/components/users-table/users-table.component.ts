@@ -1,6 +1,6 @@
 import { AnimateTimings } from '@angular/animations';
 import { Token } from '@angular/compiler';
-import { Component, Input, OnInit, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@angular/core';
 import { GetUsersService } from 'src/app/services/get-users.service';
 
 
@@ -12,13 +12,14 @@ import { GetUsersService } from 'src/app/services/get-users.service';
 })
 export class UsersTableComponent implements OnInit {
   @Input() parameters!:string;
+  @Output() pagesEvent = new EventEmitter<number>()
   users:any;
   constructor(private getUsers: GetUsersService) { }
 
   ngOnInit(): void {
     this.getUsers.getUsersAll('?'+this.parameters).subscribe((data:any)=> {
       this.users = data['users']
-      console.log(this.users)
+      this.pagesEvent.emit(Number(data['pages']))
   }) 
   }
 

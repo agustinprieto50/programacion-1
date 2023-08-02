@@ -33,7 +33,11 @@ class Review(Resource):
         user_id =  get_jwt_identity()
         review = db.session.query(ReviewModel).get_or_404(id)
         claims = get_jwt()
+        poem_id = review.poem_id
+        poem = db.session.query(PoemModel).get_or_404(poem_id)
+
         if review.user_id == user_id or claims['admin'] == True:
+            poem.rating -= review.calification
             db.session.delete(review)
             db.session.commit()
             return f'Se elimino la review con id: {id}', 200
