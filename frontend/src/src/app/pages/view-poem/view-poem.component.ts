@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { DeletePoemFormComponent } from 'src/app/components/delete-poem-form/delete-poem-form.component';
 import { ViewPoemService } from 'src/app/services/view-poem.service';
+import { CanDeleteService } from 'src/app/services/can-delete.service';
 
 @Component({
   selector: 'app-view-poem',
@@ -21,7 +22,7 @@ export class ViewPoemComponent implements OnInit {
   loggedInUserId: number = 0;
   hideButton: boolean = false;
   
-  constructor(private route: ActivatedRoute,private viewPoem: ViewPoemService) { }
+  constructor(private route: ActivatedRoute,private viewPoem: ViewPoemService, private canDelete: CanDeleteService) { }
 
   ngOnInit(): void {
     this.poem_id = this.route.snapshot.paramMap.get('id')
@@ -50,13 +51,8 @@ export class ViewPoemComponent implements OnInit {
     return localStorage.getItem("token") || undefined
   }
 
-  get showDelete(){
-    if((this.user_id==localStorage.getItem("user_id")) || (localStorage.getItem("admin") == 'true')){
-        return true
-    }
-    else{
-      return false
-    }
+  showDelete(){
+    return this.canDelete.canDelete(this.user_id)
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CanDeleteService } from 'src/app/services/can-delete.service';
 
 @Component({
   selector: 'app-review-card',
@@ -8,14 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ReviewCardComponent implements OnInit {
   
   @Input() reviews!:any;
+  
   stars: number[] = [1, 2, 3, 4, 5]
 
 
-  constructor() { }
+  constructor(private canDelete: CanDeleteService) { }
 
   ngOnInit(): void {
     console.log(this.reviews)
 
+  }
+
+  showDelete(userId:any): boolean {
+    return this.canDelete.canDelete(userId)
   }
 
 }

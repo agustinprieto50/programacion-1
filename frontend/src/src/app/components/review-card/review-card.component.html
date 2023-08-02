@@ -2,7 +2,7 @@
     <div class="container col" style="margin-top:1vh;">
       <div class="card shadow-sm position-relative">
         <!-- Boton de borrar review -->
-        <button class="btn btn-danger btn-sm rounded-0 position-absolute top-0 end-0 mt-1 me-1" type="button" (click)="deleteReviewForm.openConfirmationModal(review.id)" data-bs-toggle="modal" data-bs-target="#confirmationModal" data-placement="top" title="Borrar Poem">
+        <button *ngIf="showDelete(review.user_id)"  class="btn btn-danger btn-sm rounded-0 position-absolute top-0 end-0 mt-1 me-1" type="button" (click)="deleteReviewForm.openConfirmationModal(review.id)" data-bs-toggle="modal" data-bs-target="#confirmationModal" data-placement="top" title="Borrar Poem">
           <i class="bi bi-trash3-fill"></i>
         </button>
 
