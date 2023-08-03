@@ -31,6 +31,7 @@ import { ReviewsEmptyStateComponent } from './components/reviews-empty-state/rev
 import { DeletePoemFormComponent } from './components/delete-poem-form/delete-poem-form.component';
 import { DeleteUserFormComponent } from './components/delete-user-form/delete-user-form.component';
 import { DeleteReviewFormComponent } from './components/delete-review-form/delete-review-form.component';
+import { CrudFiltersComponent } from './components/crud-filters/crud-filters.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { DeleteReviewFormComponent } from './components/delete-review-form/delet
     DeletePoemFormComponent,
     DeleteUserFormComponent,
     DeleteReviewFormComponent,
+    CrudFiltersComponent,
 
   ],
   imports: [

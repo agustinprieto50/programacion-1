@@ -16,53 +16,39 @@ export class UserCrudComponent implements OnInit {
   poemas: string = '';
   reviews: string = '';
   orden: string = 'none';
+
   params: any;
   baseParams: any;
   constructor() { }
 
   ngOnInit(): void {
-    this.params=''
+    this.params = "per_page=20"
   }
   
-  updateParams():void {
+  updateParams(filters: any): void {
+    this.params = ''
+    this.params = this.baseParams + this.convertObjectToParams(filters);
+  }
 
-    this.params=''
-    if (this.alias !== '') {
-      this.params += '&alias=' + this.alias;
+  private convertObjectToParams(obj: any): string {
+    return Object.keys(obj)
+      .map(key => `&${key}=${encodeURIComponent(obj[key])}`)
+      .join('');
+  }
 
-    }
+ 
 
-    if (this.poemas !== '') {
-      this.params += '&poem_count=' + this.poemas;
-    }
-
-    if (this.reviews !== '') {
-      this.params += '&review_count=' + this.reviews;
-    }
-
-    if (this.orden !== 'none') {
-      this.params += '&order_by=' + this.orden;
-    }
+  getItemsPerPage (value: number) {
+    this.params =  `per_page=${value}` 
     this.baseParams = this.params
-
   }
 
-  clearForms() {
-    this.alias = '';
-    this.poemas = '';
-    this.reviews = '';
-    this.orden = 'none';
-    this.updateParams(); // Optionally, call this if you want to update params after clearing the forms.
-  }
-
-  updatePages (value: number) {
+  paginationPages (value:number) {
     this.pages = value
   }
 
-  updatePage(value: number) {
-    this.params = this.baseParams
-    this.params += '&page=' + value
+  getPage (value: number) {
+    this.params = this.baseParams + `&page=${value}` 
   }
-
 }
 

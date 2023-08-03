@@ -12,30 +12,9 @@
         <app-header></app-header>
     <main style="min-height: 80vh;">
         <div class="container d-flex gap-1 justify-content-left">
-          <button (click)="clearForms()" class="btn btn-primary">Limpiar Filtros</button>
-            <div class="form-group">
-                <label for="Autor">Alias</label>
-                <input type="text" [(ngModel)]="alias" (ngModelChange)="updateParams()" name="filtro_alias" id="alias" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="Titulo">Cantidad de poemas mayor a</label>
-                <input type="text" [(ngModel)]="poemas" (ngModelChange)="updateParams()" name="filtro_poemas" id="poemas" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="Titulo">Cantidad de reviews mayor a</label>
-                <input type="text" [(ngModel)]="reviews" (ngModelChange)="updateParams()" name="filtro_reviews" id="reviews" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="desplegable">Ordenar</label>
-                <select name="desplegable" [(ngModel)]="orden" (change)="updateParams()" name="ordernar" id="orden" class="form-control">
-                  <option [ngValue]="'none'" >--Elegir una opción --</option>
-                  <option value="alias">Alias(ascendente)</option>
-                  <option value="alias[desc]">Alias(descendente)</option>
-                  <option value="poem_count">Cant. de poemas(ascendente)</option>
-                  <option value="poem_count[desc]">Cant. de poemas(descendente)</option>
-                </select>
-             </div>
-            
+          
+
+            <app-crud-filters (filtersChanged)="updateParams($event)"></app-crud-filters>
 
 
             <div class="ms-auto">
@@ -44,8 +23,29 @@
             
         </div>
     
-        <app-users-table [parameters]="params" (pagesEvent)="updatePages($event)"></app-users-table>
-        <app-pagination [pages]="pages" (changePageEvent)="updatePage($event)"></app-pagination>
+        <app-users-table [parameters]="params" (updatePagesEvent)="paginationPages($event)"></app-users-table>
+        <div class="container">
+          <div class="row">
+
+            <!-- Empty Column to create space (if needed) -->
+            <div class="col-sm-4"></div>
+
+            <!-- Pagination (Middle) -->
+            <div class="col-sm-4 text-center">
+              <app-pagination [pages]="pages" (changePageEvent)="getPage($event)"></app-pagination>
+            </div>
+        
+            
+        
+            <!-- Items per Page (End) -->
+            <div class="col-sm-4 order-sm-last text-end">
+              <div class="d-flex justify-content-end">
+                <app-items-per-page (itemsPerPageEvent)="getItemsPerPage($event)"></app-items-per-page>
+              </div>
+            </div>
+            
+          </div>
+      </div>
 
 </main>
 

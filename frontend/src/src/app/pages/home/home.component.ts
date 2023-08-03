@@ -44,51 +44,17 @@ export class HomeComponent implements OnInit {
     this.params = this.baseParams + `&page=${value}` 
   }
 
-  updateParams():void {
-
-    this.params=''
-
-    if (this.alias !== '') {
-      this.params += '&alias=' + this.alias;
-
-    }
-    if (this.titulo !== '') {
-      this.params += '&title=' + this.titulo;
-
-    }
-    if (this.fechaMayor !== '') {
-      this.params += '&date[gt]=' + this.fechaMayor;
-
-    }
-    if (this.fechaMenor !== '') {
-      this.params += '&date[lt]=' + this.fechaMenor;
-
-    }
-    if (this.calMayor !== '') {
-      this.params += '&calification[gt]=' + this.calMayor;
-
-    }
-    if (this.calMenor!== '') {
-      this.params += '&calification[lt]=' + this.calMenor;
-
-    }
-
-    if (this.orden !== 'none') {
-      this.params += '&order_by=' + this.orden;
-    }
-    console.log(this.fechaMayor)
+  updateParams(filters: any): void {
+    this.params = ''
+    this.params = this.baseParams + this.convertObjectToParams(filters);
   }
 
-  clearForms() {
-    this.alias = '';
-    this.titulo = '';
-    this.fechaMayor = '';
-    this.fechaMenor = '';
-    this.calMayor = '';
-    this.calMenor = '';
-    this.orden = 'none';
-    this.updateParams(); // Optionally, call this if you want to update params after clearing the forms.
+  private convertObjectToParams(obj: any): string {
+    return Object.keys(obj)
+      .map(key => `&${key}=${encodeURIComponent(obj[key])}`)
+      .join('');
   }
+}
 
   
-}
+

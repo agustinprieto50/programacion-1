@@ -1,66 +1,51 @@
-import { Component, OnInit, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.css']
 })
-export class FiltersComponent  {
-  @Output() params:any;
+export class FiltersComponent {
+  @Output() filtersChanged = new EventEmitter<any>();
+
   alias: string = '';
   titulo: string = '';
   fechaMayor: string = '';
   fechaMenor: string = '';
   calMayor: string = '';
   calMenor: string = '';
-  orden: string = '';
-  
-  constructor() { 
-    
-  }
+  orden: string = 'none';
 
-  ngOnInit(){
-    this.params=''
-    
-  }
+  updateParams(): void {
 
-  updateParams():void {
-
-    this.params=''
+    const params: any = {};
 
     if (this.alias !== '') {
-      this.params += '&alias=' + this.alias;
-
+      params.alias = this.alias;
     }
     if (this.titulo !== '') {
-      this.params += '&title=' + this.titulo;
-
+      params.title = this.titulo;
     }
     if (this.fechaMayor !== '') {
-      this.params += '&date[gt]=' + this.fechaMayor;
-
+      params['date[gt]'] = this.fechaMayor;
     }
     if (this.fechaMenor !== '') {
-      this.params += '&date[lt]=' + this.fechaMenor;
-
+      params['date[lt]'] = this.fechaMenor;
     }
     if (this.calMayor !== '') {
-      this.params += '&calification[gt]=' + this.calMayor;
-
+      params['calification[gt]'] = this.calMayor;
     }
-    if (this.calMenor!== '') {
-      this.params += '&calification[lt]=' + this.calMenor;
-
+    if (this.calMenor !== '') {
+      params['calification[lt]'] = this.calMenor;
     }
-
     if (this.orden !== 'none') {
-      this.params += '&order_by=' + this.orden;
+      params.order_by = this.orden;
     }
 
+    this.filtersChanged.emit(params);
   }
 
-  clearForms() {
+  clearForms(): void {
     this.alias = '';
     this.titulo = '';
     this.fechaMayor = '';
@@ -68,8 +53,6 @@ export class FiltersComponent  {
     this.calMayor = '';
     this.calMenor = '';
     this.orden = 'none';
-    this.updateParams(); // Optionally, call this if you want to update params after clearing the forms.
+    this.updateParams();
   }
-
-
 }

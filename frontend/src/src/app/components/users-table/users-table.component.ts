@@ -12,21 +12,21 @@ import { GetUsersService } from 'src/app/services/get-users.service';
 })
 export class UsersTableComponent implements OnInit {
   @Input() parameters!:string;
-  @Output() pagesEvent = new EventEmitter<number>()
+  @Output() updatePagesEvent = new EventEmitter<number>();
   users:any;
   constructor(private getUsers: GetUsersService) { }
 
   ngOnInit(): void {
     this.getUsers.getUsersAll('?'+this.parameters).subscribe((data:any)=> {
       this.users = data['users']
-      this.pagesEvent.emit(Number(data['pages']))
+      this.updatePagesEvent.emit(Number(data['pages']))
   }) 
   }
 
   ngOnChanges() {
     this.getUsers.getUsersAll('?'+this.parameters).subscribe((data:any)=> {
       this.users = data['users']
-      console.log(this.users)
+      this.updatePagesEvent.emit(Number(data['pages']))
   }) 
   }
 
