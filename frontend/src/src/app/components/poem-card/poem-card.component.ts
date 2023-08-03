@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, OnInit, Output, SimpleChanges, EventEmitter} from '@angular/core';
 import { GetPoemsServiceService } from 'src/app/services/get-poems-service.service';
 import { GetUserService } from 'src/app/services/get-user.service';
+import { PoemUtilsService } from 'src/app/services/poem-utils.service';
 // import { ActivatedRoute } from '@angular/router';
 
 
@@ -18,21 +19,28 @@ export class PoemCardComponent implements OnInit, OnChanges {
   token: any
   user_id: any;
   user_review_count: any;
+  showLessReviewed:any;
 
-  constructor(private getPoems: GetPoemsServiceService, private getUser: GetUserService) { }
+  constructor(private getPoems: GetPoemsServiceService, private getUser: GetUserService,private PoemUtilsService: PoemUtilsService) { }
 
   getPoemsScript () {
     this.token = localStorage.getItem('token') || undefined
     this.user_id = localStorage.getItem('user_id') || undefined
     if (this.token) {
-      this.getUser.getUser(this.user_id).subscribe((data: any) => {
-        this.user_review_count = data['review_count']
-      })
-      if (this.user_review_count < 5){
-        this.getPoems.getPoemsAll('?order_by=calification[asc]&'+this.parameters)
+      this.PoemUtilsService.isUserEnabledToPostPoem().subscribe(
+        (value) =>{
+          this.showLessReviewed = value
+          
+    
+        }
+      )
+      if (!this.showLessReviewed){
+        this.parameters = "order_by=calification"
+        this.getPoems.getPoemsAll(this.parameters)
         .subscribe((data: any) => {
         this.poems = data['poems']
         this.updatePagesEvent.emit(Number(data['pages']))
+       
         
     })
       }

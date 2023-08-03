@@ -16,7 +16,6 @@ export class ReviewCardComponent implements OnInit {
   constructor(private canDelete: CanDeleteService) { }
 
   ngOnInit(): void {
-    console.log(this.reviews)
 
   }
 

@@ -18,7 +18,7 @@ export class AddPoemBtnComponent implements OnInit {
 
       }
     )
-    console.log(this.isEnabled)
+  
   }
 
 }

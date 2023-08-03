@@ -36,6 +36,7 @@ export class LogInModalComponent implements OnInit {
         localStorage.setItem('user_id', rta.id)
         localStorage.setItem("admin",rta.admin)
         this.router.navigate([''])
+        window.location.reload()
 
       }, error: (error) => {
         alert("Credenciales incorrectas")
