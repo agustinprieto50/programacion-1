@@ -110,7 +110,7 @@ class Poems(Resource):
         ratio = 0
         if poem_count != 0:
             ratio = review_count / poem_count   
-        if poem_count == 0 or ratio >= 3:
+        if poem_count == 0 or ratio >= 5:
             db.session.add(poem)
             db.session.commit()
             return poem.to_json(),201
@@ -132,7 +132,7 @@ class PoemUtils(Resource):
         ratio = 0
         if poem_count != 0:
             ratio = review_count / poem_count   
-        if poem_count == 0 or ratio >= 3:
+        if poem_count == 0 or ratio >= 5:
             return True
         else:
             return False

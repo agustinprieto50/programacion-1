@@ -1,51 +1,50 @@
-
 <app-add-review-form [poem_id]="poem_id"></app-add-review-form>
-        <app-header></app-header>
+<app-header></app-header>
 
-    <main style="min-height: 80vh;" class="bg-light">
-    
-        <div class="d-flex flex-column">
-            <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <h1>{{ title }}, by <a routerLink="/user/{{ user_id }}">{{ alias }}</a></h1>
-                  </div>
-                  <div class="col-auto">
-                    <button *ngIf="showDelete()" class="btn btn-danger btn-sm rounded-0" type="button" (click)="deletePoemForm.openConfirmationModal()" data-bs-toggle="modal" data-bs-target="#confirmationModal" data-placement="top" title="Borrar Poem">
-                      <i class="bi bi-trash3-fill"></i>
-                    </button>
-                    <app-delete-poem-form [poemId]="poem_id" [title]="title" #deletePoemForm></app-delete-poem-form>
-                  </div>
-                </div>
-                <p>{{ content }}</p>
-              </div>
-              
-            <div class="container d-flex gap-1 justify-content-left">
-                <div class="container d-flex flex-row gap-5 align-items-center">
-                        <h1>Reseñas</h1>
-                        <app-add-review-btn *ngIf="isToken && review_array.length >0 && !hideButton"></app-add-review-btn>
-                </div> 
-                <!-- items por pagina -->
-                <!-- <app-items-per-page></app-items-per-page> -->
-            </div>
-                <div class="container rating-block" *ngIf="review_array.length > 0">
-					<h2 class="bold padding-bottom-7">{{rating}}<small>/ 5</small></h2>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <ul class="list-inline rating-list" 
-                                *ngFor="let star of stars" style="display: inline-block" >
-                                  <li 
-                                      [ngClass]="{'selected': (star <= rating)} " style="display: inline-block; pointer-events: none;">
-                                    <i class="fa fa-star"></i>
-                                  </li> 
-                            </ul>
-                        </div>
-                      </div>
-				</div>
-                <div *ngIf="review_array.length === 0">
-                    <app-reviews-empty-state></app-reviews-empty-state>
-                </div>
-                <app-review-card *ngIf="isToken"  [reviews]="review_array"></app-review-card>
-                </div>
-        <!-- </div> -->
-    </main>
+<main style="min-height: 80vh;" class="bg-light">
+
+  <div class="d-flex flex-column">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>{{ title }}, by <a style="color: #0d6efd;">{{alias}}</a></h1>
+        </div>
+        <div class="col-auto">
+          <button *ngIf="showDelete()" class="btn btn-danger btn-sm rounded-0" type="button"
+            (click)="deletePoemForm.openConfirmationModal()" data-bs-toggle="modal" data-bs-target="#confirmationModal"
+            data-placement="top" title="Borrar Poem">
+            <i class="bi bi-trash3-fill"></i>
+          </button>
+          <app-delete-poem-form [poemId]="poem_id" [title]="title" #deletePoemForm></app-delete-poem-form>
+        </div>
+      </div>
+      <p>{{ content }}</p>
+    </div>
+
+    <div class="container d-flex gap-1 justify-content-left">
+      <div class="container d-flex flex-row gap-5 align-items-center">
+        <h1>Reseñas</h1>
+        <app-add-review-btn *ngIf="isToken && review_array.length >0 && !hideButton"></app-add-review-btn>
+      </div>
+      <!-- items por pagina -->
+      <!-- <app-items-per-page></app-items-per-page> -->
+    </div>
+    <div class="container rating-block" *ngIf="review_array.length > 0">
+      <h2 class="bold padding-bottom-7">{{rating}}<small>/ 5</small></h2>
+      <div class="row">
+        <div class="col-sm-12">
+          <ul class="list-inline rating-list" *ngFor="let star of stars" style="display: inline-block">
+            <li [ngClass]="{'selected': (star <= rating)} " style="display: inline-block; pointer-events: none;">
+              <i class="fa fa-star"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="review_array.length === 0">
+      <app-reviews-empty-state></app-reviews-empty-state>
+    </div>
+    <app-review-card *ngIf="isToken" [reviews]="review_array"></app-review-card>
+  </div>
+  <!-- </div> -->
+</main>

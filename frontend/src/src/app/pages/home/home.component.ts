@@ -30,6 +30,14 @@ export class HomeComponent implements OnInit {
     return localStorage.getItem("token") || undefined
   }
 
+  get isAdmin(){
+    if ((localStorage.getItem("admin")) == 'true'){
+      return true
+    }
+    else{
+      return false
+    }
+  }
 
   getItemsPerPage (value: number) {
     this.params =  `per_page=${value}` 

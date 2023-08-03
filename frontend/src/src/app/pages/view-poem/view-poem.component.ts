@@ -34,16 +34,17 @@ export class ViewPoemComponent implements OnInit {
       this.user_id = data.user
       this.review_array = data.reviews,
       this.rating = data.rating
+      this.review_array.forEach(review => {
+        if (this.loggedInUserId === review.user_id) {
+          this.hideButton = true
+        }
+      });
     })
     this.loggedInUserId = Number(localStorage.getItem("user_id"))
     if (this.loggedInUserId === this.user_id) {
       this.hideButton = true
     }
-    this.review_array.forEach(review => {
-      if (this.loggedInUserId === review.user_id) {
-        this.hideButton = true
-      }
-    });
+    
 
     
   }
