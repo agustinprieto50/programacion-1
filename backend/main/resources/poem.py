@@ -97,7 +97,7 @@ class Poems(Resource):
     def post(self):
         poem_json = request.get_json()
         print(poem_json)
-        poem = PoemModel(title=poem_json['title'], content=poem_json['content'], rating=poem_json['rating'])
+        poem = PoemModel(title=poem_json['title'], content=poem_json['content'], rating=0)
         user_id =  get_jwt_identity()
         poem.user_id = user_id 
         user = db.session.query(UserModel).get_or_404(user_id)

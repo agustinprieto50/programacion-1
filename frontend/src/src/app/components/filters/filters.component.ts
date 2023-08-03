@@ -1,13 +1,12 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.css']
 })
-export class FiltersComponent {
+export class FiltersComponent{
   @Output() filtersChanged = new EventEmitter<any>();
-
   alias: string = '';
   titulo: string = '';
   fechaMayor: string = '';
@@ -15,6 +14,7 @@ export class FiltersComponent {
   calMayor: string = '';
   calMenor: string = '';
   orden: string = 'none';
+  
 
   updateParams(): void {
 

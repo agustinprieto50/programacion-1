@@ -1,62 +1,33 @@
-
-    <!-- Header Component -->
-    <app-header></app-header>
-
-    <main style="min-height: 80vh;">
-    
-    
-
-    <div *ngIf="isToken" class="container d-flex gap-1 justify-content-left">
-        
-        
-        <!-- Boton Add Poem -->
-        <app-add-poem-btn></app-add-poem-btn>
-        <div class="container d-flex gap-1 justify-content-left flex-row-reverse">
-            
-        </div>
-        <app-add-poem-form></app-add-poem-form>
+<!-- Header Component -->
+<app-header></app-header>
+<main style="min-height: 80vh;">
+  <div *ngIf="isToken" class="container d-flex gap-1 justify-content-left">
+    <!-- Boton Add Poem -->
+    <app-add-poem-btn></app-add-poem-btn>
+    <div class="container d-flex gap-1 justify-content-left flex-row-reverse">
     </div>
-
-
-    <app-filters *ngIf="!isToken" (filtersChanged)="updateParams($event)"></app-filters>
-
-    <div id="poemsDiv" class="album py-5 bg-light">
-        <div class="container">
-        
-            <app-poem-card [parameters]="params" (updatePagesEvent)="paginationPages($event)"></app-poem-card>
-            
-            <div class="container">
-                <div class="row">
-
-                  <!-- Empty Column to create space (if needed) -->
-                  <div class="col-sm-4"></div>
-
-                  <!-- Pagination (Middle) -->
-                  <div class="col-sm-4 text-center">
-                    <app-pagination [pages]="pages" (changePageEvent)="getPage($event)"></app-pagination>
-                  </div>
-              
-                  
-              
-                  <!-- Items per Page (End) -->
-                  <div class="col ms-auto order-sm-last text-end">
-                    <div class="d-flex justify-content-end">
-                      <app-items-per-page (itemsPerPageEvent)="getItemsPerPage($event)"></app-items-per-page>
-                    </div>
-                  </div>
-                  
-                </div>
+    <app-add-poem-form></app-add-poem-form>
+  </div>
+  <app-filters *ngIf="!isToken" (filtersChanged)="updateParams($event)"></app-filters>
+  <div id="poemsDiv" class="album py-5 bg-light">
+    <div class="container">
+      <app-poem-card [parameters]="params" (updatePagesEvent)="paginationPages($event)" (clickOnUserEvent)="updateParams({'alias': $event})"></app-poem-card>
+      <div class="container">
+        <div class="row">
+          <!-- Empty Column to create space (if needed) -->
+          <div class="col-sm-4"></div>
+          <!-- Pagination (Middle) -->
+          <div class="col-sm-4 text-center">
+            <app-pagination [pages]="pages" (changePageEvent)="getPage($event)"></app-pagination>
+          </div>
+          <!-- Items per Page (End) -->
+          <div class="col ms-auto order-sm-last text-end" style="margin-top: 15px;">
+            <div class="d-flex justify-content-end">
+              <app-items-per-page (itemsPerPageEvent)="getItemsPerPage($event)"></app-items-per-page>
             </div>
-              
-              
-              
-
+          </div>
         </div>
-
-        
-        
+      </div>
     </div>
-   
-    
-
+  </div>
 </main>

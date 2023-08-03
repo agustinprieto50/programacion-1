@@ -9,7 +9,6 @@ auth = Blueprint('auth', __name__, url_prefix='/auth')
 #Método de logueo
 @auth.route('/login', methods=['POST'])
 def login():
-    #Busca al profesor en la db por mail
     user = db.session.query(UserModel).filter(UserModel.email == request.get_json().get("email")).first_or_404()
     #Valida la contraseña
     if user.validate_pass(request.get_json().get("password")):

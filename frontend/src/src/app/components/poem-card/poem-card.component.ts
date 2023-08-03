@@ -12,6 +12,7 @@ import { GetUserService } from 'src/app/services/get-user.service';
 export class PoemCardComponent implements OnInit, OnChanges {
   @Input() parameters!:string;
   @Output() updatePagesEvent = new EventEmitter<number>();
+  @Output() clickOnUserEvent = new EventEmitter<string>();
   itemsPerPage:any;
   poems: any;
   token: any
@@ -70,5 +71,8 @@ export class PoemCardComponent implements OnInit, OnChanges {
     return Array.from({ length: rating }, (_, index) => index + 1);
   }
 
-  
+  outputUserName(value: string) {
+    this.clickOnUserEvent.emit(value)
+  }
+
 }

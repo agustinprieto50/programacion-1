@@ -1,28 +1,38 @@
 <div id="filters" name="filters" class="container d-flex gap-1 justify-content-left">
-    <button (click)="clearForms()" class="btn btn-primary">Limpiar Filtros</button>
-    <div class="form-outline">
-        <label for="Autor">Alias</label>
-        <input type="text" [(ngModel)]="alias" (ngModelChange)="updateParams()" name="filtro_alias" id="alias" class="form-control">
-    </div>
-
-    <div class="form-outline">
-        <label for="Titulo">Titulo</label>
-        <input type="text" [(ngModel)]="titulo" (ngModelChange)="updateParams()" name="filtro_titulo" id="titulo" class="form-control">
-    </div>
-
-    <div class="form-outline">
-        <label for="fecha">Publicado despues de:</label>
-        <input type="date" [(ngModel)]="fechaMayor" (ngModelChange)="updateParams()" class="form-control">
-     </div>
-
-    <div class="form-outline">
-        <label for="fecha">Publicado antes de:</label>
-        <input type="date" [(ngModel)]="fechaMenor" (ngModelChange)="updateParams()" class="form-control">
-    </div>
-    
-
+  <div class="row" style="margin-bottom: 10px; margin-right: 5px;">
+    <div class="col-md-3">
       <div class="form-outline">
-        <label for="desplegable">Ordenar por</label>
+        <label for="Alias" class="small-label">Alias</label>
+        <input type="text" [(ngModel)]="alias" (ngModelChange)="updateParams()" name="filtro_alias" id="alias" class="form-control">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-outline">
+        <label for="Titulo" class="small-label">Titulo</label>
+        <input type="text" [(ngModel)]="titulo" (ngModelChange)="updateParams()" name="filtro_titulo" id="titulo" class="form-control">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-outline">
+        <label for="fecha" class="small-label">Publicado despues de:</label>
+        <input type="date" [(ngModel)]="fechaMayor" (ngModelChange)="updateParams()" class="form-control">
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="form-outline">
+        <label for="fecha" class="small-label">Publicado antes de:</label>
+        <input type="date" [(ngModel)]="fechaMenor" (ngModelChange)="updateParams()" class="form-control">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-outline">
+        <label for="desplegable" class="small-label">Ordenar por</label>
         <select [(ngModel)]="orden" (change)="updateParams()" name="desplegable" id="desplegable" class="form-control">
           <option value="none">--Elegir una opción--</option>
           <option value="title">Titulo (ascendente)</option>
@@ -32,6 +42,12 @@
           <option value="date">Fecha (ascendente)</option>
           <option value="date[asc]">Fecha (descendente)</option>
         </select>
-     </div> 
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <button (click)="clearForms()" style="margin-top: 20px; margin-bottom: 20px;" class="btn btn-primary">Limpiar Filtros</button>
+    </div>
+  </div>
   </div>
   
